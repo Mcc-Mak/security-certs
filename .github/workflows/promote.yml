@@ -1,0 +1,90 @@
+name: Promote
+
+# Promotion pipeline: a push to dev-001 flows dev-001 -> dev -> main, in that order.
+# See AGENTS.md#change-workflow. Stages are never skipped or reordered.
+
+on:
+  push:
+    branches: [dev-001]
+  # Manual escape hatch to re-run promotion for a dev-001 head that is already green.
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type the dev-001 commit SHA to promote'
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  # One promotion at a time. Without this, two rapid pushes to dev-001 can race and
+  # promote out of order.
+  group: promote-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # dev-001 -> dev is automatic. dev is the integration branch, so a failed promotion
+  # there is contained and cheap to fix.
+  promote-dev:
+    name: dev-001 -> dev
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: dev-001
+
+      - name: Refuse to promote unless dev-001 actually adds commits over dev
+        run: |
+          git fetch origin dev --quiet
+          if [ -z "$(git log --oneline origin/dev..dev-001)" ]; then
+            echo "dev-001 contains nothing new over dev. Nothing to promote."
+            exit 0
+          fi
+          echo "Promoting $(git rev-list --count origin/dev..dev-001) commit(s) to dev."
+
+      - name: Fast-forward dev
+        # --ff-only fails loudly if the branches have diverged, instead of silently
+        # creating a merge commit or dropping work.
+        run: |
+          git push origin "dev-001:dev" --ff-only
+
+      - name: Summarize
+        run: |
+          {
+            echo "### Promoted to \`dev\`"
+            echo
+            git log --oneline --no-merges "origin/dev..dev-001" | head -20 | sed 's/^/- /'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  # dev -> main is gated. `main` is the stable branch, so promoting to it requires
+  # approving the `main` environment (Settings -> Environments -> main -> Required
+  # reviewers). If that protection is not configured, this job still requires a manual
+  # dispatch rather than auto-promoting.
+  promote-main:
+    name: dev -> main
+    needs: promote-dev
+    runs-on: ubuntu-latest
+    environment: main
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: dev
+
+      - name: Fast-forward main
+        run: |
+          git fetch origin main --quiet
+          if [ -z "$(git log --oneline origin/main..dev)" ]; then
+            echo "dev contains nothing new over main. Nothing to promote."
+            exit 0
+          fi
+          git push origin "dev:main" --ff-only
+
+      - name: Summarize
+        run: |
+          {
+            echo "### Promoted to \`main\`"
+            echo
+            git log --oneline --no-merges "origin/main..dev" | head -20 | sed 's/^/- /'
+          } >> "$GITHUB_STEP_SUMMARY"
