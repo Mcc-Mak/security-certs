@@ -6,12 +6,8 @@ name: Promote
 on:
   push:
     branches: [dev-001]
-  # Manual escape hatch to re-run promotion for a dev-001 head that is already green.
+  # Manual re-run, e.g. to retry a promotion that failed on a transient error.
   workflow_dispatch:
-    inputs:
-      confirm:
-        description: 'Type the dev-001 commit SHA to promote'
-        required: true
 
 permissions:
   contents: write
@@ -34,33 +30,45 @@ jobs:
           fetch-depth: 0
           ref: dev-001
 
-      - name: Refuse to promote unless dev-001 actually adds commits over dev
+      - name: Check promotion is a fast-forward
+        # `git push` already refuses a non-fast-forward by default, but it reports it as
+        # an opaque "rejected (non-fast-forward)". Checking ancestry first turns that
+        # into an explicit error naming the branches, and lets us skip cleanly when
+        # dev-001 is already contained in dev.
         run: |
           git fetch origin dev --quiet
+          # Capture the pre-push base. `git push` advances refs/remotes/origin/dev, so
+          # the Summarize step cannot use origin/dev as its base after the push.
+          echo "PROMOTE_BASE=$(git rev-parse origin/dev)" >> "$GITHUB_ENV"
           if [ -z "$(git log --oneline origin/dev..dev-001)" ]; then
-            echo "dev-001 contains nothing new over dev. Nothing to promote."
+            echo "::notice::dev-001 contains nothing new over dev. Nothing to promote."
             exit 0
+          fi
+          if ! git merge-base --is-ancestor origin/dev dev-001; then
+            echo "::error::dev and dev-001 have diverged. Refusing to promote."
+            echo "::error::Merge dev into dev-001 on a local clone, then push dev-001."
+            exit 1
           fi
           echo "Promoting $(git rev-list --count origin/dev..dev-001) commit(s) to dev."
 
-      - name: Fast-forward dev
-        # --ff-only fails loudly if the branches have diverged, instead of silently
-        # creating a merge commit or dropping work.
-        run: |
-          git push origin "dev-001:dev" --ff-only
+      - name: Push dev-001 to dev
+        # No --force. A plain push cannot clobber a diverged dev.
+        run: git push origin "dev-001:dev"
 
       - name: Summarize
+        if: always()
         run: |
           {
-            echo "### Promoted to \`dev\`"
+            echo "### dev-001 -> dev"
             echo
-            git log --oneline --no-merges "origin/dev..dev-001" | head -20 | sed 's/^/- /'
+            git log --oneline --no-merges "$PROMOTE_BASE..dev-001" 2>/dev/null \
+              | head -20 | sed 's/^/- /'
           } >> "$GITHUB_STEP_SUMMARY"
 
   # dev -> main is gated. `main` is the stable branch, so promoting to it requires
   # approving the `main` environment (Settings -> Environments -> main -> Required
-  # reviewers). If that protection is not configured, this job still requires a manual
-  # dispatch rather than auto-promoting.
+  # reviewers). If that protection is not configured, this job still runs unattended and
+  # main receives commits with no human in the loop - verify it before first use.
   promote-main:
     name: dev -> main
     needs: promote-dev
@@ -72,19 +80,29 @@ jobs:
           fetch-depth: 0
           ref: dev
 
-      - name: Fast-forward main
+      - name: Check promotion is a fast-forward
         run: |
           git fetch origin main --quiet
+          echo "PROMOTE_BASE=$(git rev-parse origin/main)" >> "$GITHUB_ENV"
           if [ -z "$(git log --oneline origin/main..dev)" ]; then
-            echo "dev contains nothing new over main. Nothing to promote."
+            echo "::notice::dev contains nothing new over main. Nothing to promote."
             exit 0
           fi
-          git push origin "dev:main" --ff-only
+          if ! git merge-base --is-ancestor origin/main dev; then
+            echo "::error::main and dev have diverged. Refusing to promote."
+            exit 1
+          fi
+          echo "Promoting $(git rev-list --count origin/main..dev) commit(s) to main."
+
+      - name: Push dev to main
+        run: git push origin "dev:main"
 
       - name: Summarize
+        if: always()
         run: |
           {
-            echo "### Promoted to \`main\`"
+            echo "### dev -> main"
             echo
-            git log --oneline --no-merges "origin/main..dev" | head -20 | sed 's/^/- /'
+            git log --oneline --no-merges "$PROMOTE_BASE..dev" 2>/dev/null \
+              | head -20 | sed 's/^/- /'
           } >> "$GITHUB_STEP_SUMMARY"

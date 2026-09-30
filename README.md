@@ -17,26 +17,36 @@ Each exam folder has a similar shape:
 
 ```
 <exam>/
-  README.md           overview / session index
-  notes/
-    chapters/         the actual study material, one file per session
-    tips/             vendor PDFs — study guides, exam objectives, study plans
-  question-banks/     practice material (CISSP only, currently a placeholder)
+  README.md             overview / session index
+  note/
+    chapter/            the actual study material, one file per session
+      intermediate/     cross-session mermaid diagram sets
+    tip/                vendor PDFs — study guides, exam objectives, study plans
+  question-bank/        practice material
 ```
 
-- **`notes/chapters/`** — the session summaries. This is what you read and what you edit.
-- **`notes/tips/`** — multi-megabyte vendor PDFs. Read-only reference, never edited.
+- **`note/chapter/`** — the session summaries. This is what you read and what you edit.
+- **`note/chapter/intermediate/`** — supporting mermaid diagram sets and, for CISSP, a
+  hand-drawn SVG overview.
+- **`note/tip/`** — multi-megabyte vendor PDFs. Read-only reference, never edited.
   Committed deliberately; there is no `.gitignore`.
-- **`question-banks/`** — reserved for real exam material. Currently a placeholder in
-  both exams.
-- CISSP additionally has `notes/chapters/intermediates/` — mermaid diagram sets and a
-  hand-drawn SVG overview, supporting the 34 chapters.
+- **`question-bank/`** — real exam material only. CISSP holds the official practice-test
+  MCQ sets and their archived result CSVs; Network+ is still a placeholder.
+- **Directory names are singular** — `note/`, `chapter/`, `intermediate/`, `tip/`,
+  `question-bank/`. The exam folders and the practice-test book folder keep their real
+  names.
 
 ## Conventions
 
-- Filenames encode the session: `04_Session_4_Risk_Management.md` (CISSP) and
-  `Session 09 (V68-V79).md` (Network+). The two schemes are intentionally **not**
-  normalized — match the local file.
+- Every `note/chapter/*.md` filename follows one scheme, in both exams:
+  `session-{NN}-video-{NNN}-to-{NNN}_{content_description}.md` — 2-digit session,
+  3-digit first/last video, lowercase description. For example
+  `session-04-video-022-to-027_risk_management.md` and
+  `session-09-video-068-to-079_ip_addressing.md`. A single-video session repeats the number.
+- Files in `intermediate/` are cross-session diagram sets, named `[a-z0-9][a-z0-9-]*`
+  with **singular** nouns: `session-02.md`, `diagram-part-1.md`, `consolidation.md`.
+- Question-bank files are `mcq-{domain|practice-test}-NN.html` and
+  `{domain|practice-test}-NN-tNN.csv`, with `summary-*.csv` for the rollups.
 - Diagrams are ```mermaid fenced blocks. Nothing renders or validates them here, so check
   your syntax.
 - `comptia-network+/` contains a literal `+`. **Quote every path** in shell commands.
