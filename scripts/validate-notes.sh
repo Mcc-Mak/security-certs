@@ -69,7 +69,7 @@ done < <(find codebase -name '*.md' -print0)
 # ── Summary ──────────────────────────────────────────────────────────────────
 if [[ $errors -gt 0 ]]; then
   echo ""
-  echo "Validation FAILED with $errors error(s)."
+  echo "Validation FAILED with $errors error(s)." >&2
   exit 1
 fi
 

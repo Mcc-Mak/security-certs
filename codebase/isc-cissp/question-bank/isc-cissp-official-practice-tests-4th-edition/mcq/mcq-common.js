@@ -73,7 +73,7 @@ function initMCQ(csvFilename, totalQuestions) {
     });
 
     exportBtn.addEventListener('click', () => {
-        if (currentResults && currentResults.length) exportCSV(currentResults);
+        if (currentResults?.length) exportCSV(currentResults);
         else alert("Please submit your answers first to generate CSV.");
     });
     document.getElementById('modalExportBtn').addEventListener('click', () => {
