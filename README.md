@@ -1,6 +1,7 @@
 # Security Certs
 
 > **Live site:** https://mcc-mak.github.io/security-certs/
+> **Wiki:** https://github.com/Mcc-Mak/security-certs/wiki
 
 Study notes for two IT security certifications, deployed as a Docsify site (GitHub Pages) and a GitHub Wiki via a seven-job CI/CD pipeline.
 

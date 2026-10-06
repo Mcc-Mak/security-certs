@@ -39,6 +39,9 @@ The system manages markdown-formatted study notes, validates their structure, an
 | REQ-13 | Pages site must render mermaid diagrams via a client-side plugin |
 | REQ-14 | Pages landing page must act as a TOCTREE: exams → {note, question-bank} |
 | REQ-15 | Wiki must publish docbase/ engineering docs only (no study notes) |
+| REQ-16 | Pages sidebar links must use absolute paths (`/`-prefixed) so navigation works from any page depth with `relativePath: true` |
+| REQ-17 | Pages exam READMEs must link to individual session note files for in-site navigation |
+| REQ-18 | Wiki Home.md must transform dead links: `codebase/` → Pages site URLs, `docbase/docs/X.md` → wiki page `X`, `AGENTS.md` → GitHub source URL |
 
 ## 4. Non-functional requirements
 

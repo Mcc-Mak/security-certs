@@ -31,8 +31,20 @@ fi
 # ── Wipe existing content (keep .git) ────────────────────────────────────────
 find "$wiki_dir" -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
 
-# ── Home.md from root README.md ──────────────────────────────────────────────
-cp README.md "$wiki_dir/Home.md"
+# ── Home.md from root README.md (transform dead links for wiki context) ──────
+# The root README.md contains links to codebase/, docbase/docs/, and AGENTS.md
+# that don't exist as wiki pages. Transform them:
+# - codebase/ exam links   → live Pages site URLs
+# - docbase/docs/X.md      → wiki page name X
+# - docbase/TOCTREE.md     → wiki page TOCTREE
+# - AGENTS.md              → GitHub source URL
+sed \
+  -e 's|(codebase/comptia-network+/README\.md)|(https://mcc-mak.github.io/security-certs/#/comptia-network+/README)|g' \
+  -e 's|(codebase/isc-cissp/README\.md)|(https://mcc-mak.github.io/security-certs/#/isc-cissp/README)|g' \
+  -e 's|(docbase/docs/\([A-Za-z-]*\)\.md)|(\1)|g' \
+  -e 's|(docbase/TOCTREE\.md)|(TOCTREE)|g' \
+  -e 's|(AGENTS\.md)|(https://github.com/Mcc-Mak/security-certs/blob/main/AGENTS.md)|g' \
+  README.md > "$wiki_dir/Home.md"
 
 # ── TOCTREE.md from docbase/TOCTREE.md (flatten links for wiki root) ─────────
 # Wiki pages live at the root, so `docs/SRS.md` → `SRS.md`.

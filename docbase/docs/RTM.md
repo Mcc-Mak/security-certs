@@ -19,6 +19,9 @@ Maps each requirement from the [SRS](SRS.md) to the CI/CD job or script that ver
 | REQ-13 | Mermaid rendering on Pages | `pages/index.html` (mermaid CDN plugin) |
 | REQ-14 | Pages TOCTREE landing page | `pages/README.md` + `build-pages.sh` |
 | REQ-15 | Wiki is docbase-only | `sync-wiki.sh` (no codebase/ content) |
+| REQ-16 | Sidebar absolute links | `pages/_sidebar.md` (absolute `/`-prefixed paths) |
+| REQ-17 | Exam README session links | `codebase/{exam}/README.md` (clickable session links) |
+| REQ-18 | Wiki dead-link transform | `sync-wiki.sh` (sed transforms in Home.md generation) |
 | NFR-01 | Single workflow run | `paths-ignore: CHANGELOG.md` + `GITHUB_TOKEN` push semantics |
 | NFR-02 | Wiki non-blocking | `wiki` job exits 0 when wiki repo not found |
 | NFR-03 | No cascading triggers | `GITHUB_TOKEN` pushes do not re-trigger workflows |
