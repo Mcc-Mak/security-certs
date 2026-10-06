@@ -1,0 +1,72 @@
+# Architecture
+
+## Overview
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    codebase/ (source)                    │
+│  ┌─────────────────────┐    ┌─────────────────────────┐ │
+│  │  comptia-network+/  │    │      isc-cissp/         │ │
+│  │  note/chapter/      │    │  note/chapter/          │ │
+│  │  note/chapter/      │    │  note/chapter/          │ │
+│  │    intermediate/    │    │    intermediate/        │ │
+│  │  note/tip/          │    │  note/tip/              │ │
+│  │  question-bank/     │    │  question-bank/         │ │
+│  └─────────────────────┘    └─────────────────────────┘ │
+└─────────────────────────────────────────────────────────┘
+          │                                    │
+          ▼                                    ▼
+┌─────────────────────┐              ┌─────────────────────┐
+│  scripts/           │              │  docbase/           │
+│  build-pages.sh     │              │  docs/*.md          │
+│  sync-wiki.sh       │              │  TOCTREE.md         │
+│  validate-notes.sh  │              └─────────────────────┘
+└─────────────────────┘                        │
+          │                                    │
+          ▼                                    ▼
+┌─────────────────────┐              ┌─────────────────────┐
+│  _site/ (assembled) │              │  GitHub Wiki        │
+│  pages/ shell +     │              │  (docbase/ eng docs │
+│  codebase/ content  │              │   flattened to root)│
+└─────────────────────┘              └─────────────────────┘
+          │
+          ▼
+┌─────────────────────┐
+│  GitHub Pages       │
+│  (Docsify, CSR)     │
+└─────────────────────┘
+```
+
+## Deployment surfaces
+
+### GitHub Pages (Docsify)
+
+- **No build step** — Docsify renders markdown client-side via JavaScript
+- `pages/index.html` loads Docsify + mermaid from CDN
+- `pages/README.md` is the TOCTREE landing page (exams → {note, question-bank})
+- `pages/_sidebar.md` provides persistent Docsify navigation
+- `scripts/build-pages.sh` assembles `_site/` by copying `pages/` shell + `codebase/` content
+- `.nojekyll` disables Jekyll processing so raw `.md` files are served
+- `relativePath: true` in the Docsify config ensures links work under the Pages subpath
+
+### GitHub Wiki
+
+- `scripts/sync-wiki.sh` publishes `docbase/` engineering docs only (no study notes)
+- `Home.md` is generated from the root `README.md`
+- `TOCTREE.md` is generated from `docbase/TOCTREE.md` with links flattened for wiki root
+- `docbase/docs/*.md` are copied to the wiki root
+- `_Sidebar.md` provides navigation (Home, TOCTREE, engineering docs)
+- GitHub renders mermaid natively in wiki pages
+
+## Data flow
+
+```
+dev-001 push
+  → release (CHANGELOG bump)
+  → fast_checks (validate-notes.sh)
+  → security_checks (Sonar, optional)
+  → promote (dev-001 → dev → main)
+  → pages + wiki + sonar_baseline (parallel, from main)
+```
+
+All jobs chain in a single workflow run. `GITHUB_TOKEN` pushes do not re-trigger the workflow, keeping the pipeline atomic.

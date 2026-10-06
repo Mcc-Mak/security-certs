@@ -1,197 +1,158 @@
 # AGENTS.md
 
-Personal study notes for security certification exams. Mostly prose and diagrams — no
-build, no lint, no test suite, no package manifest. "Verification" means reading your own
-diff and checking your mermaid parses.
+Compact guidance for OpenCode sessions working in this repo. Read before editing.
 
-## Change workflow
+## Repository purpose
 
-**Every change follows these four steps, in order. No exceptions.**
-
-1. **Update `README.md`** first — the content change and its documentation land together.
-2. **Update `CHANGELOG.md`**, bumping the version as `major.minor.patch`:
-   - `major` — content removed, restructured, or renamed in a way that breaks existing links
-   - `minor` — new sessions, notes, diagrams, or question banks added
-   - `patch` — corrections to existing content
-3. **Commit**, with the version in the subject. Write a real subject and body:
-   - Subject: imperative, under ~72 chars, states *what* changed.
-   - Body: **why** it changed and anything non-obvious. Not a restatement of the diff.
-   - Format: `v1.2.0: add Network+ sessions 22-24`
-4. **Push to `dev-001`.** Never commit or push directly to `dev` or `main`.
-
-### Promotion pipeline
-
-```
-dev-001  ──merge──▶  dev  ──merge──▶  main
-```
-
-A push to `dev-001` flows `dev-001` → `dev` → `main` in that order. `dev` is the
-integration branch, `main` is stable. **Never skip or reorder a stage** — `dev-001` is
-never merged straight into `main`, and `dev` is never merged into `dev-001`.
-
-Promotion runs automatically via `.github/workflows/promote.yml` on every push to
-`dev-001`:
-
-- `dev-001` → `dev` is automatic.
-- `dev` → `main` requires approving the `main` environment. **If that protection is not
-  configured** (Settings → Environments → `main` → Required reviewers), `main` receives
-  commits with no human in the loop. Verify it before the first real promotion.
-
-Do not force-push, rebase, or amend published branches, and do not delete `dev` or `main`.
-If the branches diverge, `promote.yml` checks ancestry with `git merge-base --is-ancestor`
-and fails with an explicit error rather than merging — resolve that by hand, don't weaken
-the workflow. Note `git push` has no `--ff-only` flag; a plain, non-forced push already
-refuses to clobber a diverged branch, and the ancestry check just makes the failure legible.
+A **study-notes repository** for two IT security certifications — **CompTIA Network+ (N10-009)** and **ISC CISSP**. All content lives in `codebase/{comptia-network+,isc-cissp}/`. The repo deploys two documentation surfaces via a seven-job CI/CD pipeline: a **Docsify site** on GitHub Pages (client-side rendered, with Mermaid diagram support) for study notes, and a **GitHub Wiki** for engineering documentation (`docbase/`).
 
 ## Layout
 
-One git repo rooted here. There are **no nested repos** — don't create any.
+Content and engineering docs are strictly separated. Do not mix them.
 
-```
-security-certs/
-  isc-cissp/
-    README.md
-    question-bank/
-      .gitkeep
-      isc-cissp-official-practice-tests-4th-edition/   book title, left as-is
-        mcq/                       8 domain + 4 practice-test MCQ sets
-        result/                    14 archived result CSVs + 2 summaries
-    note/
-      chapter/                     34 session summaries
-        intermediate/              39 mermaid files + 6 SVGs
-      tip/                         1 PDF
-  comptia-network+/
-    README.md                       session → summary index
-    question-bank/                 reserved, empty (.gitkeep)
-    note/
-      chapter/                     28 session summaries
-        intermediate/              1 course-wide mermaid diagram
-      tip/                         3 PDFs
-```
+- `codebase/` — all study-notes content
+  - `comptia-network+/` — 28 session summaries + 1 course diagram
+    - `note/chapter/` — `session-{NN}-video-{NNN}-to-{NNN}_{description}.md`
+    - `note/chapter/intermediate/` — supporting diagrams (lowercase kebab-case)
+    - `note/tip/` — vendor reference PDFs (read-only, never edit or bulk-read)
+    - `question-bank/` — placeholder for future practice material
+    - `README.md` — session table with summaries
+  - `isc-cissp/` — 34 session summaries + 39 intermediate diagrams + 6 SVGs
+    - `note/chapter/` — `session-{NN}-video-{NNN}-to-{NNN}_{description}.md`
+    - `note/chapter/intermediate/` — per-session Mermaid diagrams, hand-curated diagram sets, appendices, 6-layer SVG overviews
+    - `note/tip/` — CISSP masterpiece overview PDF (read-only)
+    - `question-bank/isc-cissp-official-practice-tests-4th-edition/` — 12 MCQ HTML pages + 16 archived result CSVs
+    - `README.md` — one-line title (expand as needed)
+- `docbase/` — engineering documentation (markdown only; published to GitHub Wiki)
+  - `TOCTREE.md` — index linking every doc below (also drives the wiki `_Sidebar.md`)
+  - `docs/SRS.md`, `Architecture.md`, `QuickStart.md`, `Configurations.md`, `CICD-Pipeline.md`, `RTM.md`, `CRM.md`
+  - **CRM** = Cross-Reference Matrix (maps requirements -> docs -> tests). Keep it updated when requirements change.
+- `pages/` — Docsify shell (`index.html`, `README.md`, `.nojekyll`); assembled with codebase content into `_site/` at deploy time
+- `scripts/` — CI/CD helper scripts
+  - `validate-notes.sh` — CI gate: filename conventions, directory naming, mermaid fence balance, encoding
+  - `build-pages.sh` — assembles `_site/` from `pages/` + `codebase/` for Pages deployment
+  - `sync-wiki.sh` — publishes `docbase/` engineering docs to a wiki clone
+  - `configure-secrets.sh` — pushes local `.env` secrets to GitHub and enables Pages/Wiki
+- `CHANGELOG.md` (repo root) — one entry per change, versioned `major.minor.patch` (auto-generated by the `release` CI job from Conventional Commits)
+- `.env.example` (repo root) — documents CI/CD secrets (`PROMOTE_TOKEN`, `SONAR_TOKEN`)
+- `.github/workflows/ci-cd.yml` — the seven-job CI/CD pipeline
 
-- `chapter/` = the authored study material, one file per session. This is what you edit.
-- `intermediate/` = supporting diagrams. Read-only in practice.
-- `tip/` = vendor PDFs (study guides, exam objectives, study plans). Reference material;
-  don't edit, and don't reproduce their contents in the notes.
-- **Directory names are singular**, matching the file naming: `note/`, `chapter/`,
-  `intermediate/`, `tip/`, `question-bank/`. The two exam folders and the book folder
-  keep their real names.
-- `comptia-network+/question-bank/` is still a placeholder, not an oversight. Don't fill
-  it with generated questions; only add real exam material.
-- `isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/` holds the MCQ
-  sets. Each page hardcodes its own export filename (`domain1_results.csv`) and downloads
-  to the browser, so **`result/` is archived output, not an input** — renaming those CSVs
-  does not break the pages, and vice versa. There is no Domain 8 result archived.
-- This repo consolidates two older GitHub repos, `Mcc-Mak/isc-cissp-summary` and
-  `Mcc-Mak/comptia-network--summary`. Their pre-consolidation history is **not** here —
-  clone them separately if you ever need it.
+When adding a doc, also add it to `docbase/TOCTREE.md`. When adding an env var, also add it to `.env.example`.
 
-## Chapter filename convention
+## Content conventions
 
-Every direct child of `note/chapter/` is named:
+### Filename rules
 
+**Chapter files** (`note/chapter/*.md`, excluding `intermediate/`):
 ```
 session-{NN}-video-{NNN}-to-{NNN}_{content_description}.md
 ```
+- `NN` = 2-digit session number (zero-padded)
+- `NNN` = 3-digit video number (zero-padded), first and last in the range
+- Single-video sessions repeat the number (e.g. `session-34-video-260-to-260_...`)
+- Description: lowercase `[a-z0-9_]` only
+- Video ranges are read from each file's own `## Video Vxx` headings, not assumed
 
-- `NN` — session number, 2-digit zero-padded.
-- `NNN` — first and last video covered, 3-digit zero-padded. For a single-video session
-  both halves are the same number.
-- `content_description` — lowercase `[a-z0-9_']` only. Underscore-separated words.
-
-Examples: `session-04-video-022-to-027_risk_management.md`,
-`session-34-video-260-to-260_course_conclusion_and_exam_preparation.md`.
-
-This is uniform across both exams — do not reintroduce per-exam schemes. The pattern
-applies to `note/chapter/*.md` only.
-
-Files inside `intermediate/` follow a simpler rule, because they are diagram sets that
-span sessions rather than one chapter each:
-
+**Intermediate files** (`note/chapter/intermediate/*`):
 ```
 [a-z0-9][a-z0-9-]*.(md|svg)
 ```
+- Lowercase kebab-case, singular nouns
+- Examples: `session-02.md`, `diagram-part-1.md`, `consolidation.md`, `appendix-1.md`
 
-Lowercase kebab-case, **singular** nouns. Examples: `session-02.md`, `diagram-part-1.md`,
-`consolidation.md`, `diagram-appendix-1.md`, `diagram-course.md`, and the six
-`01-…-06-….svg` layer overviews. Note `diagram-part-1.md`, not `diagrams-part-1.md`.
+### Directory names
 
-The singular rule is scoped to `intermediate/`. Chapter `{content_description}` keeps
-**plural** nouns, because those are the real course titles — `ports_protocols_and_services`,
-`network_services`, `data_security_controls`, and `risk_assessments_and_threat_modeling` are
-what the sessions are actually called. Don't singularize them.
+All directories in the study tree use **singular** nouns:
 
-## The two note sets are deliberately inconsistent
+| Was (pre-2.0.0) | Now |
+| :--- | :--- |
+| `notes/` | `note/` |
+| `notes/chapters/` | `note/chapter/` |
+| `notes/tips/` | `note/tip/` |
+| `question-banks/` | `question-bank/` |
+| `notes/chapters/intermediates/` | `note/chapter/intermediate/` |
+| `…/results/` | `…/result/` |
 
-Chapter **filenames** are now uniform across both exams (see above). Almost everything
-else still differs. Don't normalize the rest — match the local file.
+Exam folders (`isc-cissp/`, `comptia-network+/`) and book-title folders keep their names — those are product titles, not descriptive categories.
 
-| | `isc-cissp/` | `comptia-network+/` |
-| :--- | :--- | :--- |
-| Exam | CISSP (2024) | Network+ N10-009 (superseded) |
-| Chapters | 34 | 28 |
-| Filename | `session-04-video-022-to-027_risk_management.md` | `session-09-video-068-to-079_ip_addressing.md` |
-| Heading | `## Video V22: ...` / `### Video V22 (Outline)` | `# Session 9: ...` / `## V68 - ...` |
-| Diagrams | `intermediate/` (three sets) + SVG | `intermediate/` (one course-wide file) |
-| Index | `README.md` is a title line only | `README.md` is a real session→summary table |
+### The diagram-set trap (CISSP)
 
-- **In `comptia-network+/`, the video range in the filename is authoritative** for what a
-  chapter covers. The `README.md` table is lossy prose and drifts from the files.
-- `isc-cissp/README.md` is a title, not an index. Don't try to keep it in sync.
-- Note `comptia-network+` contains a literal `+`. Quote every path in shell commands.
+The three CISSP intermediate diagram sets are **intentionally divergent** with uneven coverage:
+- **Per-session set** (`session-02.md` through `session-33.md`): Session 20 exists only here; Session 01 has no diagram.
+- **Part 1 / Part 2 sets** (`diagram-part-1.md` covers sessions 2-19, `diagram-part-2.md` covers 21-34): Session 34 exists only in Part 2.
+- **Consolidation set** (`consolidation.md`): independent merge.
 
-## Trap: `isc-cissp/note/chapter/intermediate/` holds three diagram sets
+This is pre-existing, not a bug to auto-correct. Never try to "fix" the coverage gaps.
 
-Editing one does **not** update the others. This is the easiest mistake to make here.
+### `tip/` is read-only
 
-1. `session-NN.md` — per-session, one block per video. Covers Sessions **02–33** only
-   (no `01`, no `34`). Headed `### Video Vxx`. 4,429 lines for 02–17 alone.
-2. `diagram-part-1.md` (sessions 2–17) and `diagram-part-2.md` (18, 19, 21–34) —
-   hand-curated, coarser, headed `## Session N: ...`. **Not** generated from, and not
-   concatenations of, the `session-NN.md` files: Part 1 is 1,082 lines against 4,429 for
-   `session-02`–`17` combined, and **zero** `session-NN.md` files appear verbatim in it.
-   Part 2 also **skips Session 20**, which does have a `session-20.md`.
-3. `consolidation.md` — one large cross-session graph.
+The `note/tip/` PDFs are vendor reference material committed deliberately. **Never edit, rename, or bulk-read them.** They are excluded from the Pages site and wiki by default.
 
-Also in that folder: `appendix-1.md`, `appendix-2.md`, `diagram-appendix-1.md`,
-`diagram-appendix-2.md`, and the six `NN-<layer name>.svg` overview files (hand-drawn,
-**not** mermaid).
+### Encoding
 
-So Session 20 has a diagram in set 1 but not set 2; Session 34 exists only in set 2;
-Session 01 has no diagram anywhere. Coverage is genuinely uneven — don't assume the sets
-should match, and don't "fix" the gaps without being asked.
+All markdown files must be UTF-8 **without BOM**. The PowerShell default on Windows is UTF-8 with BOM — if editing on Windows, re-save without BOM. The `validate-notes.sh` CI gate checks for this.
 
-Decide which set you are changing before you write. If a diagram belongs in more than
-one, you have to edit each file separately.
+### Mermaid diagrams
 
-## Diagrams
+Notes use ` ```mermaid ` fenced code blocks. Diagram types in use: `graph TD`, `graph LR`, `mindmap`, `flowchart`, `sequenceDiagram`, `classDiagram`. Every ` ``` ` that opens a fence must have a matching closing ` ``` ` — the CI gate checks fence balance.
 
-All diagrams are ```mermaid fenced blocks (452 in `isc-cissp`, 114 in `comptia-network+`).
-Nothing renders or validates them here, so correctness is on you. Types in use:
+## Workflow (follow in order)
 
-`graph` 247/66, `flowchart` 151/24, `mindmap` 49/11, `sequenceDiagram` 2/7, `pie` 1/3,
-`timeline` 2/2, plus a single `gantt` in `comptia-network+` (the study-plan chart).
+Every task follows these 7 steps, in order:
 
-Match the mermaid type already used in the file you are editing. Tables use a
-`| :--- | :--- |` alignment row.
+1. **User Requirement** — capture the ask before editing.
+2. **Plan & Track** — act as project manager before implementing. Maintain three distinct concerns, each at its own level of granularity. These are a separation of **concerns** (distinct roles, granularity, and lifecycles), not a separation of **actions** (a temporal sequence) — a backlog is not an item, an item is not a tasklist:
+   - **Backlog** — the portfolio of work: milestones, labels, tags, and the project board. Manage via `gh`.
+   - **Items** — one GitHub issue per distinct unit of work, with acceptance criteria and a verifiable state (open/closed). Open new issues for work discovered during planning; close issues only when the work is verifiably complete.
+   - **Tasklist** — the granular checklist of steps within the current session, tracking execution progress per item.
 
-## `tip/` — do not read wholesale
+   **Never perform a destructive action** (closing or reopening issues, deleting labels/milestones/tags, removing board items) without explicit confirmation — pause and ask first.
+3. **Implement** into `codebase/`. Follow the filename and directory conventions above.
+4. **Document** into `docbase/` (TOCTREE updated). CRM must reflect new/changed requirements.
+5. **CHANGELOG.md** — the `release` CI job auto-generates entries from Conventional Commits. Do **not** manually add version entries; write a good conventional-commit message instead.
+6. **Git** — commit to branch `dev-001`:
+   - Subject uses Conventional Commits format (e.g. `feat: add session-29 notes`, `fix: correct VLAN trunking diagram`)
+   - Body explains the what and why
+   - Push `dev-001` to `origin/dev-001`. Do **not** push to `dev` or `main` manually.
+7. **CI/CD** runs automatically (see below).
 
-Vendor PDFs: the CISSP masterpiece overview plus the Network+ study guide, exam
-objectives, and study plan (the study guide alone is 3.9 MB). Never extract or grep
-these in full, it will flood your context. There is **no `.gitignore`** and they are
-committed on purpose — don't add ignores and don't "clean them up".
+Do not skip steps 3-4. Implementation without docs is incomplete.
 
-Filenames throughout contain spaces and parentheses. Always quote paths.
+### How versions are decided
 
-## Windows encoding gotcha (verified)
+This is a notes repository, so the version tracks **content**, not software APIs.
 
-All Markdown here is **valid UTF-8** (confirmed with a strict decoder) and contains
-U+2013 `–`, U+2192 `→`, U+00D7 `×`.
+| Bump | When |
+| :--- | :--- |
+| `major` | Content removed, restructured, or renamed in a way that breaks existing links |
+| `minor` | New sessions, notes, diagrams, or question banks added |
+| `patch` | Corrections to existing content |
 
-PowerShell 5.1's `Get-Content` and `Select-String` default to ANSI and render those as
-mojibake (`�`) in your terminal. The file is fine — the display is not.
+The `release` CI job computes the bump from conventional commits: `feat!:` or `BREAKING CHANGE:` -> major, `feat:` -> minor, everything else -> patch.
 
-- Always pass `-Encoding UTF8` when reading these files.
-- **Do not "repair" the mojibake you see.** It is not in the file, and a blind
-  find-and-replace will corrupt the notes for real.
+## Git & branching
+
+- Working branch is always **`dev-001`**. Commit and push there only.
+- Promotion is automated by GitHub Actions, not manual:
+  `origin/dev-001` -> `origin/dev` -> `origin/main` -> **GitHub Pages** (Docsify site, study notes) + **GitHub Wiki** (engineering docs)
+- Never force-push. Never commit directly to `main` or `dev`.
+
+## CI/CD pipeline (`.github/workflows/ci-cd.yml`)
+
+A single workflow run on every `dev-001` push (plus `workflow_dispatch`). All jobs chain in one run:
+
+1. **`release`** — bump version and update `CHANGELOG.md` from conventional commits. Pushes a `chore(release): X.Y.Z` commit to `dev-001` (does not re-trigger because `CHANGELOG.md` is in `paths-ignore`).
+2. **`fast_checks`** (needs: release) — run `scripts/validate-notes.sh` (filename conventions, directory naming, mermaid fence balance, encoding). Gate.
+3. **`security_checks`** (needs: fast_checks) — **SonarQube Cloud** only (quality gate, fail-closed when `SONAR_TOKEN` is configured; skipped with a notice when absent). CodeQL is dropped — there is no analyzable source code in a prose repo.
+4. **`promote`** (needs: security_checks) — direct `git push` of the dev-001 HEAD to `dev` and `main` using `GITHUB_TOKEN`. No PRs; gate checks already ran in steps 2-3. `--force-with-lease` handles stale merge commits.
+5. **`pages`** + **`wiki`** + **`sonar_baseline`** (needs: promote, parallel) — check out `main` (the promoted commit): assemble the Docsify site from `pages/` + `codebase/` and deploy to Pages; publish `docbase/` engineering docs to the GitHub Wiki (uses `PROMOTE_TOKEN`); run an informational SonarCloud scan to establish the main-branch baseline.
+
+`GITHUB_TOKEN` pushes do not trigger new workflow runs (GitHub security feature), which is exactly what we want — the entire pipeline is one run. GitHub does not create the `.wiki.git` repo until the first page is saved through the web UI; until then the `wiki` job warns and exits 0 (non-blocking).
+
+When editing workflows, preserve the job chain (release -> fast_checks -> security_checks -> promote -> pages/wiki/sonar_baseline) and the gate semantics. SonarQube Cloud runs (and fails closed) when `SONAR_TOKEN` is configured; it is skipped when absent.
+
+## Conventions
+
+- Versioning is strict `major.minor.patch`; bumped per CHANGELOG entry (auto-generated).
+- `.env.example` is the source of truth for configurable knobs. Real `.env` is never committed.
+- Prefer editing existing files over creating new ones; only create files listed in the Layout section.

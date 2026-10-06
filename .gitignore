@@ -1,0 +1,11 @@
+# environment files
+.env
+*.local
+
+# build artifacts
+_site/
+.scannerwork/
+
+# os / editor
+.DS_Store
+*.swp

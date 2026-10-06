@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Certs — Study Notes</title>
+  <meta name="description" content="CompTIA Network+ and ISC CISSP certification study notes with Mermaid diagrams.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1f4da;</text></svg>">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <style>
+    .sidebar-nav h2 { font-size: 1.1rem; }
+    .markdown-section { max-width: 900px; }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+      name: 'Security Certs',
+      repo: 'Mcc-Mak/security-certs',
+      relativePath: true,
+      loadSidebar: true,
+      subMaxLevel: 3,
+      search: {
+        placeholder: 'Search notes...',
+        noData: 'No results',
+        depth: 3
+      },
+      mermaidConfig: {
+        querySelector: '.mermaid'
+      },
+      plugins: [
+        function mermaidPlugin(hook) {
+          var mermaidLoaded = false;
+          hook.beforeEach(function(content) {
+            if (!mermaidLoaded && content.indexOf('```mermaid') !== -1) {
+              mermaidLoaded = true;
+            }
+            return content;
+          });
+          hook.afterEach(function(html) {
+            return html;
+          });
+        }
+      ]
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: false });
+
+    const renderMermaid = () => {
+      document.querySelectorAll('pre[data-lang="mermaid"]').forEach((el, i) => {
+        const code = el.querySelector('code');
+        if (!code) return;
+        const graph = code.textContent;
+        const div = document.createElement('div');
+        div.className = 'mermaid';
+        div.textContent = graph;
+        div.id = 'mermaid-' + i;
+        el.replaceWith(div);
+      });
+      if (document.querySelector('.mermaid')) {
+        mermaid.run();
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new MutationObserver(() => renderMermaid());
+      observer.observe(document.getElementById('main'), { childList: true, subtree: true });
+    });
+  </script>
+</body>
+</html>

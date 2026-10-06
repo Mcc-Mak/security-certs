@@ -1,70 +1,72 @@
-# security-certs
+# Security Certs
 
-Personal study notes for security certification exams.
+Study notes for two IT security certifications, deployed as a Docsify site (GitHub Pages) and a GitHub Wiki via a seven-job CI/CD pipeline.
 
-> **This repo is mostly prose.** It's Markdown notes and diagrams, not software. There is
-> no build, no test suite, and no package manifest. "Correct" means the content is accurate
-> and the mermaid diagrams parse — not that a test suite passes.
+## Exams
 
-## What's here
+| Exam | Sessions | Chapters | Diagrams | Question Bank |
+| :--- | :--- | :--- | :--- | :--- |
+| [CompTIA Network+ (N10-009)](codebase/comptia-network+/README.md) | 28 | 28 | 1 course diagram | Placeholder |
+| [ISC CISSP](codebase/isc-cissp/README.md) | 34 | 34 | 39 intermediate + 6 SVGs | 12 MCQ sets + 16 result CSVs |
 
-| Exam | Path | Chapters | Status |
-| :--- | :--- | :--- | :--- |
-| **CISSP** | [`isc-cissp/`](isc-cissp/) | 34 | 2024 study guide |
-| **CompTIA Network+** | [`comptia-network+/`](comptia-network+/) | 28 | N10-009, superseded exam |
-
-Each exam folder has a similar shape:
+## Repository structure
 
 ```
-<exam>/
-  README.md             overview / session index
-  note/
-    chapter/            the actual study material, one file per session
-      intermediate/     cross-session mermaid diagram sets
-    tip/                vendor PDFs — study guides, exam objectives, study plans
-  question-bank/        practice material
+codebase/                    Study-notes content (the actual notes)
+  comptia-network+/          28 Network+ session summaries
+  isc-cissp/                 34 CISSP session summaries + diagrams
+docbase/                     Engineering documentation (SRS, Architecture, etc.)
+pages/                       Docsify shell (index.html, README.md, .nojekyll)
+scripts/                     CI/CD helper scripts (validate, build, sync)
+.github/workflows/ci-cd.yml  Seven-job pipeline (release → checks → promote → deploy)
 ```
 
-- **`note/chapter/`** — the session summaries. This is what you read and what you edit.
-- **`note/chapter/intermediate/`** — supporting mermaid diagram sets and, for CISSP, a
-  hand-drawn SVG overview.
-- **`note/tip/`** — multi-megabyte vendor PDFs. Read-only reference, never edited.
-  Committed deliberately; there is no `.gitignore`.
-- **`question-bank/`** — real exam material only. CISSP holds the official practice-test
-  MCQ sets and their archived result CSVs; Network+ is still a placeholder.
-- **Directory names are singular** — `note/`, `chapter/`, `intermediate/`, `tip/`,
-  `question-bank/`. The exam folders and the practice-test book folder keep their real
-  names.
+## Content conventions
 
-## Conventions
+- **Chapter files**: `session-{NN}-video-{NNN}-to-{NNN}_{description}.md`
+- **Intermediate files**: lowercase kebab-case (e.g. `diagram-part-1.md`, `session-02.md`)
+- **Directories**: singular nouns (`note/`, `chapter/`, `tip/`, `intermediate/`)
+- **Diagrams**: Mermaid fenced code blocks (`graph TD`, `mindmap`, `sequenceDiagram`, etc.)
+- **Encoding**: UTF-8 without BOM
 
-- Every `note/chapter/*.md` filename follows one scheme, in both exams:
-  `session-{NN}-video-{NNN}-to-{NNN}_{content_description}.md` — 2-digit session,
-  3-digit first/last video, lowercase description. For example
-  `session-04-video-022-to-027_risk_management.md` and
-  `session-09-video-068-to-079_ip_addressing.md`. A single-video session repeats the number.
-- Files in `intermediate/` are cross-session diagram sets, named `[a-z0-9][a-z0-9-]*`
-  with **singular** nouns: `session-02.md`, `diagram-part-1.md`, `consolidation.md`.
-- Question-bank files are `mcq-{domain|practice-test}-NN.html` and
-  `{domain|practice-test}-NN-tNN.csv`, with `summary-*.csv` for the rollups.
-- Diagrams are ```mermaid fenced blocks. Nothing renders or validates them here, so check
-  your syntax.
-- `comptia-network+/` contains a literal `+`. **Quote every path** in shell commands.
+See [AGENTS.md](AGENTS.md) for the full convention guide.
 
-Working in this repo? Read [`AGENTS.md`](AGENTS.md) first — it documents the diagram-set
-trap, the encoding gotcha, and the required change workflow.
+## CI/CD pipeline
 
-## Contributing
+```
+dev-001 push
+  → release (auto CHANGELOG from Conventional Commits)
+  → fast_checks (validate-notes.sh — filenames, fences, encoding)
+  → security_checks (SonarQube Cloud, optional)
+  → promote (dev-001 → dev → main, direct push)
+  → pages + wiki + sonar_baseline (parallel, from main)
+```
 
-Every change follows the same four steps, in order. See
-[AGENTS.md](AGENTS.md#change-workflow) for the full version and for the
-`dev-001` → `dev` → `main` promotion pipeline.
+All jobs chain in a single workflow run. See [docbase/docs/CICD-Pipeline.md](docbase/docs/CICD-Pipeline.md) for details.
 
-1. Update `README.md`
-2. Update `CHANGELOG.md`, bumping the version as `major.minor.patch`
-3. Commit with a real subject and body, version in the subject
-4. Push to `dev-001`
+## Engineering documentation
 
-## License
+Full engineering docs (SRS, Architecture, CI/CD Pipeline, etc.) live in [`docbase/`](docbase/TOCTREE.md) and are published to the [GitHub Wiki](https://github.com/Mcc-Mak/security-certs/wiki).
 
-[MIT](LICENSE) © 2026 Mcc-Mak
+## Getting started
+
+```bash
+git clone https://github.com/Mcc-Mak/security-certs.git
+cd security-certs
+git checkout dev-001
+./scripts/validate-notes.sh    # verify conventions
+```
+
+See [docbase/docs/QuickStart.md](docbase/docs/QuickStart.md) for local preview and editing instructions.
+
+## Versioning
+
+This is a notes repository, so versions track **content** changes:
+
+| Bump | When |
+| :--- | :--- |
+| major | Content removed, restructured, or renamed (breaks links) |
+| minor | New sessions, notes, diagrams, or question banks added |
+| patch | Corrections to existing content |
+
+The `release` CI job auto-generates CHANGELOG entries from [Conventional Commits](https://www.conventionalcommits.org/).

@@ -1,26 +1,8 @@
 # Changelog
 
-All notable changes to this project are documented here.
+All notable changes to this project are documented here. Versions follow semver.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-## How versions are decided here
-
-This is a notes repository, so the version tracks **content**, not software APIs.
-
-| Bump | When |
-| :--- | :--- |
-| `major` | Content removed, restructured, or renamed in a way that breaks existing links |
-| `minor` | New sessions, notes, diagrams, or question banks added |
-| `patch` | Corrections to existing content |
-
-Every change bumps the version, adds an entry here, and updates `README.md` — in that
-order. See [`AGENTS.md`](AGENTS.md#change-workflow).
-
----
-
-## [2.0.0] - 2026-09-30
+## 2.0.0 (2026-09-30)
 
 Every chapter and diagram file in both exams was renamed, and the promotion pipeline was
 fixed. A **major** bump under the rule above, because the chapter files were restructured
@@ -98,9 +80,7 @@ book titles, not descriptive categories. `.github/` is fixed by GitHub and is ne
   authoritative for current paths.
 - There is still no archived result for Domain 8; only `mcq-domain-08.html` exists.
 
-[2.0.0]: https://github.com/Mcc-Mak/security-certs/compare/v1.0.0...v2.0.0
-
-## [1.0.0] - 2026-09-30
+## 1.0.0 (2026-09-30)
 
 First release of the consolidated repository. Unifies two previously separate repos and
 adds the structure and workflow that did not previously exist.
@@ -144,5 +124,3 @@ adds the structure and workflow that did not previously exist.
 - The three CISSP diagram sets are intentionally divergent and have uneven coverage:
   Session 20 exists only in the per-session set, Session 34 only in the Part 2 set, and
   Session 01 has no diagram. This is pre-existing, not a bug to be auto-corrected.
-
-[1.0.0]: https://github.com/Mcc-Mak/security-certs/releases/tag/v1.0.0
