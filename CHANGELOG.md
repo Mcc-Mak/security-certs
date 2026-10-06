@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here. Versions follow semver.
 
+## 3.0.3 (2026-10-06)
+
+### Other
+- docs: add deployed Pages URL to root README
+
 ## 3.0.2 (2026-10-06)
 
 ### Fixed
