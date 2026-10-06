@@ -24,6 +24,7 @@ Maps requirements → documents → artifacts. Keep updated when requirements or
 | REQ-16 Sidebar absolute links | §3.3 | §Pages | — | — | §2 pages | ✓ |
 | REQ-17 Exam README session links | §3.3 | §Pages | — | — | §2 pages | ✓ |
 | REQ-18 Wiki dead-link transform | §3.3 | §Wiki | — | — | §2 wiki | ✓ |
+| REQ-19 Search indexes all sessions | §3.3 | §Pages | — | — | §2 pages | ✓ |
 
 ## Documents to artifacts
 

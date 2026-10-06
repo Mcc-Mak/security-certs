@@ -42,6 +42,7 @@ The system manages markdown-formatted study notes, validates their structure, an
 | REQ-16 | Pages sidebar links must use absolute paths (`/`-prefixed) so navigation works from any page depth with `relativePath: true` |
 | REQ-17 | Pages exam READMEs must link to individual session note files for in-site navigation |
 | REQ-18 | Wiki Home.md must transform dead links: `codebase/` → Pages site URLs, `docbase/docs/X.md` → wiki page `X`, `AGENTS.md` → GitHub source URL |
+| REQ-19 | Pages search plugin must index all session pages (`paths: 'all'`); sidebar must list all chapter files so search has full coverage |
 
 ## 4. Non-functional requirements
 
