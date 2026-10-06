@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here. Versions follow semver.
 
+## 3.0.4 (2026-10-06)
+
+### Fixed
+- Docsify navigation, session links, wiki dead links
+
 ## 3.0.3 (2026-10-06)
 
 ### Other
