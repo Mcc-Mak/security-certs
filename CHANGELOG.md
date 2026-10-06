@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here. Versions follow semver.
 
+## 3.0.2 (2026-10-06)
+
+### Fixed
+- sonar_baseline scans as main, QG NONE is non-fatal
+
 ## 3.0.1 (2026-10-06)
 
 ### Fixed
