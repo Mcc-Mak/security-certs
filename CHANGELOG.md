@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here. Versions follow semver.
 
+## 3.1.3 (2026-10-06)
+
+### Other
+- refactor: extract shared MCQ CSS/JS into external files to fix SonarQube duplication
+
 ## 3.1.2 (2026-10-06)
 
 ### Fixed
