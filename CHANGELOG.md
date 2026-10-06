@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here. Versions follow semver.
 
+## 3.1.0 (2026-10-06)
+
+### Added
+- full-text search across all 62 session notes
+
 ## 3.0.4 (2026-10-06)
 
 ### Fixed
