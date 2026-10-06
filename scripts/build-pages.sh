@@ -32,14 +32,12 @@ cp pages/README.md "$out/README.md"
 # Session titles are extracted from filenames: session-{NN}-video-..._{desc}.md
 {
   echo "- [Home](/)"
-  echo ""
 
   for exam in comptia-network+ isc-cissp; do
     exam_label="CompTIA Network+"
     [[ "$exam" == "isc-cissp" ]] && exam_label="ISC CISSP"
 
-    echo "- $exam_label"
-    echo ""
+    echo "- [$exam_label](/$exam/README.md)"
 
     # Collect chapter filenames, sort by session number
     while IFS= read -r _filename; do
@@ -63,13 +61,10 @@ cp pages/README.md "$out/README.md"
       done | sort -t- -k2 -n
     )
 
-    echo ""
-
     # ── Question-bank link (if a README.md index exists) ─────────────────────
     qb_dir="codebase/$exam/question-bank"
     if [[ -f "$qb_dir/README.md" ]]; then
       echo "  - [Question Bank](/$exam/question-bank/README.md)"
-      echo ""
     fi
   done
 } > "$out/_sidebar.md"

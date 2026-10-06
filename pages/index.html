@@ -39,6 +39,34 @@
     .markdown-section .card { margin-bottom: 1rem; }
     /* Badge spacing */
     .markdown-section .badge { margin: 0 .2rem .2rem 0; }
+
+    /* CRITICAL: Override Bootstrap .collapse:not(.show){display:none}
+       The docsify-sidebar-collapse plugin adds .collapse to <li> elements
+       to indicate collapsed state, but Bootstrap hides the entire <li>.
+       We only want the <ul> children hidden (handled by plugin CSS), not
+       the folder label itself. */
+    .sidebar-nav li.collapse { display: list-item !important; }
+
+    /* Sidebar folder headers: make them stand out */
+    .sidebar-nav > ul > li.folder > a,
+    .sidebar-nav > ul > li.folder > p > a {
+      font-weight: 700;
+      font-size: 15px;
+      color: #2c3e50;
+    }
+    /* Ensure folder cursor indicates clickability */
+    .sidebar-nav li.folder { cursor: pointer; }
+
+    /* Improve sidebar link contrast */
+    .sidebar ul li a { color: #364149; }
+    .sidebar ul li a:hover { color: #42b983; }
+
+    /* Blockquote: improve contrast (Docsify default is faded gray) */
+    .markdown-section blockquote { color: #555; border-left-color: #42b983; }
+
+    /* Ensure table text has good contrast */
+    .markdown-section th { color: #2c3e50; }
+    .markdown-section td { color: #34495e; }
   </style>
 </head>
 <body>

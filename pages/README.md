@@ -5,9 +5,9 @@
 <div class="row g-4 mt-1">
 
 <div class="col-md-6">
-<div class="card h-100 shadow-sm">
+<div class="card h-100 shadow-sm border-primary">
   <div class="card-body">
-    <h5 class="card-title"><i class="bi bi-hdd-network text-primary"></i> CompTIA Network+ (N10-009)</h5>
+    <h5 class="card-title text-primary"><i class="bi bi-hdd-network"></i> CompTIA Network+ (N10-009)</h5>
     <p class="card-text">28 session summaries covering networking concepts, implementation, operations, security, and troubleshooting.</p>
     <span class="badge bg-primary">28 sessions</span>
     <span class="badge bg-secondary">Mermaid diagrams</span>
@@ -18,12 +18,12 @@
 </div>
 
 <div class="col-md-6">
-<div class="card h-100 shadow-sm">
+<div class="card h-100 shadow-sm border-success">
   <div class="card-body">
-    <h5 class="card-title"><i class="bi bi-shield-lock text-success"></i> ISC CISSP</h5>
+    <h5 class="card-title text-success"><i class="bi bi-shield-lock"></i> ISC CISSP</h5>
     <p class="card-text">34 session summaries across all eight CISSP domains, per-session Mermaid diagrams, and 12 interactive MCQ practice sets.</p>
     <span class="badge bg-success">34 sessions</span>
-    <span class="badge bg-info">39 diagrams</span>
+    <span class="badge bg-info text-dark">39 diagrams</span>
     <span class="badge bg-warning text-dark">12 MCQ sets</span>
     <hr>
     <a href="#/isc-cissp/README.md" class="btn btn-success btn-sm"><i class="bi bi-book"></i> Browse notes</a>
