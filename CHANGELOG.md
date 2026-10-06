@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here. Versions follow semver.
 
+## 3.2.1 (2026-10-06)
+
+### Fixed
+- resolve Bootstrap collapse conflict and improve color contrast
+
 ## 3.2.0 (2026-10-06)
 
 ### Added
