@@ -16,8 +16,8 @@ root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$root"
 
 errors=0
-add_error() { echo "::error::$1"; errors=$((errors + 1)); }
-add_warning() { echo "::warning::$1"; }
+add_error() { echo "::error::$1" >&2; errors=$((errors + 1)); }
+add_warning() { echo "::warning::$1" >&2; }
 
 # ── 1. Chapter filenames ────────────────────────────────────────────────────
 chapter_re='^session-[0-9]{2}-video-[0-9]{3}-to-[0-9]{3}_[a-z0-9_'"'"']+\.md$'

@@ -690,6 +690,18 @@
             });
         }
 
+        function getStatusText(r) {
+            if (r.isCorrect) return '<span class="hashtag correct">Correct</span>';
+            if (r.userAnswer === "(skipped)") return '<span class="hashtag skipped">Skipped</span>';
+            return '<span class="hashtag incorrect">Incorrect</span>';
+        }
+
+        function getStatusLabel(r) {
+            if (r.isCorrect) return "Correct";
+            if (r.userAnswer === "(skipped)") return "Skipped";
+            return "Incorrect";
+        }
+
         function showModal(results) {
             document.querySelectorAll(`input,select`).forEach(e => e.disabled = true);
             const total = results.length;
@@ -697,7 +709,7 @@
             let html = `<p><strong>Score: ${correctCount}/${total} (${Math.round(correctCount / total * 100)}%)</strong></p>`;
             html += `<div style="overflow-x: auto;"><table class="result-table"><thead><tr><th>Q#</th><th>Your Answer</th><th>Correct Answer</th><th>Result</th><th>Explanation</th><tr></thead><tbody>`;
             results.forEach(r => {
-                const statusText = r.isCorrect ? `<span class="hashtag correct">Correct</span>` : (r.userAnswer === "(skipped)" ? `<span class="hashtag skipped">Skipped</span>` : `<span class="hashtag incorrect">Incorrect</span>`);
+                const statusText = getStatusText(r);
                 html += `<tr>
             <td style="white-space: nowrap;">${r.qid}</td>
             <td>${escapeHtml(r.userAnswer)}</td>
@@ -714,7 +726,7 @@
         function exportCSV(results) {
             let csvRows = [["Question ID", "User Answer", "Correct Answer", "Result", "Explanation"]];
             results.forEach(r => {
-                csvRows.push([r.qid, r.userAnswer, r.correctAnswer, r.isCorrect ? "Correct" : (r.userAnswer === "(skipped)" ? "Skipped" : "Incorrect"), r.explanation]);
+                csvRows.push([r.qid, r.userAnswer, r.correctAnswer, getStatusLabel(r), r.explanation]);
             });
             const csvContent = csvRows.map(row => row.map(cell => `"${String(cell).replaceAll('"', '""')}"`).join(",")).join("\n");
             const blob = new Blob(["\uFEFF" + csvContent], { type: "text/csv;charset=utf-8;" });
