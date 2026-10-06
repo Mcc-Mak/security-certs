@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here. Versions follow semver.
 
+## 3.1.1 (2026-10-06)
+
+### Fixed
+- resolve all SonarQube code quality issues
+
 ## 3.1.0 (2026-10-06)
 
 ### Added
