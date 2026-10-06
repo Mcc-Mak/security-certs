@@ -65,25 +65,11 @@ cp pages/README.md "$out/README.md"
 
     echo ""
 
-    # ── Question-bank links (if any .html quiz files exist) ──────────────────
+    # ── Question-bank link (if a README.md index exists) ─────────────────────
     qb_dir="codebase/$exam/question-bank"
-    if [[ -d "$qb_dir" ]]; then
-      qb_links=""
-      while IFS= read -r -d '' qb_file; do
-        qb_rel="${qb_file#codebase/}"
-        qb_base="$(basename "$qb_file" .html)"
-        # Convert hyphens to spaces, title-case each word
-        qb_label="${qb_base//-/ }"
-        qb_label=$(echo "$qb_label" | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2)}1')
-        qb_links+="  - [${qb_label}](/${qb_rel})"$'\n'
-      done < <(find "$qb_dir" -name '*.html' -type f -print0 | sort -z)
-
-      if [[ -n "$qb_links" ]]; then
-        echo "  - Question Bank"
-        echo ""
-        printf '%s' "$qb_links"
-        echo ""
-      fi
+    if [[ -f "$qb_dir/README.md" ]]; then
+      echo "  - [Question Bank](/$exam/question-bank/README.md)"
+      echo ""
     fi
   done
 } > "$out/_sidebar.md"
