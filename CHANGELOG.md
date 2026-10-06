@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here. Versions follow semver.
 
+## 3.2.0 (2026-10-06)
+
+### Added
+- add Bootstrap styling, collapsible sidebar, and question-bank index
+
 ## 3.1.3 (2026-10-06)
 
 ### Other
