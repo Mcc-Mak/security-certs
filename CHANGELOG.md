@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here. Versions follow semver.
 
+## 3.1.2 (2026-10-06)
+
+### Fixed
+- resolve remaining SonarQube issues, add question-bank to sidebar
+
 ## 3.1.1 (2026-10-06)
 
 ### Fixed
