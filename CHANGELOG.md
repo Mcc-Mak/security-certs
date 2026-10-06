@@ -2,6 +2,19 @@
 
 All notable changes to this project are documented here. Versions follow semver.
 
+## 3.0.0 (2026-10-06)
+
+### Breaking
+- Breaking change introduced in this release
+
+### Added
+- rebrand repo with 7-job CI/CD pipeline and separated deploy surfaces
+
+### Other
+- v2.0.0: unify note naming and fix promotion pipeline
+- v1.0.0: initial release of consolidated security-certs repo
+- Initial commit
+
 ## 2.0.0 (2026-09-30)
 
 Every chapter and diagram file in both exams was renamed, and the promotion pipeline was
