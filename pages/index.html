@@ -6,7 +6,10 @@
   <title>Security Certs — Study Notes</title>
   <meta name="description" content="CompTIA Network+ and ISC CISSP certification study notes with Mermaid diagrams.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1f4da;</text></svg>">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/themes/vue.css"
+        integrity="sha384-jCK82M2ExfkqAO/MYBKMjP1qC4AvZ4/Duf2gVWOy3RPn26uz+KW5I+9S39za1Fqv" crossorigin="anonymous">
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/mermaid@10.9.8/dist/mermaid.esm.min.mjs"
+        integrity="sha384-ngTqQFGZO/UNk+6W7oe9xpqFSOUHQUL8VAb6oHZdH492UegObDwoIkWN/nySekUR" crossorigin="anonymous">
   <style>
     .sidebar-nav h2 { font-size: 1.1rem; }
     .markdown-section { max-width: 900px; }
@@ -35,7 +38,7 @@
         function mermaidPlugin(hook) {
           var mermaidLoaded = false;
           hook.beforeEach(function(content) {
-            if (!mermaidLoaded && content.indexOf('```mermaid') !== -1) {
+            if (!mermaidLoaded && content.includes('```mermaid')) {
               mermaidLoaded = true;
             }
             return content;
@@ -47,10 +50,12 @@
       ]
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1"
+          integrity="sha384-KaHhgnx/OTLoJ4J33SSJsF4x1pk4I7q3s5ZOfIDHJYl6IG7Oyn2vNDsHiWJe46fD" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/plugins/search.min.js"
+          integrity="sha384-LthJPBJ4RGco78kBY+EmKz5rmISZ5vrtAu3+l2ALQ2mrZHOe6Wyf6knyKjeC4cL6" crossorigin="anonymous"></script>
   <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.9.8/dist/mermaid.esm.min.mjs';
     mermaid.initialize({ startOnLoad: false });
 
     const renderMermaid = () => {

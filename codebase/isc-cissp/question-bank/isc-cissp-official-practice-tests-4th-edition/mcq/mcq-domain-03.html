@@ -37,7 +37,6 @@
         }
 
         .toolbar {
-            background: white;
             border-radius: 20px;
             padding: 1rem 1.5rem;
             margin-bottom: 2rem;
@@ -593,57 +592,72 @@
         const closeModal = document.querySelector('.close-modal');
         let currentResults = [];
 
+        function getMappingAnswer(selector, correctMapping, correctStr) {
+            const selects = document.querySelectorAll(selector);
+            let answers = [];
+            selects.forEach(sel => answers.push(sel.value));
+            const userAnswer = answers.join(', ') || "(no selection)";
+            const correct = correctMapping.map(m => m.correct);
+            const isCorrect = answers.length === correct.length && answers.every((v, idx) => v === correct[idx]);
+            return { userAnswer, isCorrect, correctAnswerStr: correctStr };
+        }
+
+        function getMultiAnswer(qid) {
+            const checkboxes = document.querySelectorAll(`input[name="q${qid}_chk"]:checked`);
+            const selected = Array.from(checkboxes).map(cb => cb.value).sort();
+            const userAnswer = selected.join(', ') || "(none)";
+            const correctRaw = answersMap[qid];
+            const correctArray = correctRaw.split(',').map(s => s.trim()).sort();
+            const isCorrect = selected.length === correctArray.length && correctArray.every((v, i) => v === selected[i]);
+            return { userAnswer, isCorrect, correctAnswerStr: correctRaw };
+        }
+
+        function getSingleAnswer(qid) {
+            const radio = document.querySelector(`input[name="q${qid}"]:checked`);
+            const userAnswer = radio ? radio.value : "(skipped)";
+            const correctLetter = answersMap[qid];
+            const isCorrect = (radio && radio.value === correctLetter);
+            return { userAnswer, isCorrect, correctAnswerStr: correctLetter };
+        }
+
+        function getStatus(userAnswer, isCorrect) {
+            if (userAnswer === "(skipped)") return "skipped";
+            return isCorrect ? "correct" : "incorrect";
+        }
+
+        function getCorrectAnswer(qid, correctAnswerStr) {
+            if (qid === 100 || qid === 101) return correctAnswerStr;
+            return answersMap[qid] || "Mapping";
+        }
+
+        function updateHashtag(qid, status) {
+            const hashtagSpan = document.getElementById(`hashtag-${qid}`);
+            if (!hashtagSpan) return;
+            hashtagSpan.innerHTML = ` #️⃣ ${status}`;
+            hashtagSpan.className = `hashtag ${status}`;
+        }
+
         function getUserAnswers() {
             let results = [];
             for (let i = 1; i <= 101; i++) {
                 const qid = i;
-                let userAnswer = "";
-                let isCorrect = false;
-                let correctAnswerStr = "";
-                let explanation = explanations[qid] || "No explanation available.";
+                const explanation = explanations[qid] || "No explanation available.";
+                let answer;
+
                 if (qid === 100) {
-                    const selects = document.querySelectorAll('.map-select-100');
-                    let answers = [];
-                    selects.forEach(sel => answers.push(sel.value));
-                    userAnswer = answers.join(', ') || "(no selection)";
-                    const correct = mappingQ100.map(m => m.correct);
-                    isCorrect = answers.length === correct.length && answers.every((v, idx) => v === correct[idx]);
-                    correctAnswerStr = "Clark-Wilson→C, Bell-LaPadula→A, Biba→B";
+                    answer = getMappingAnswer('.map-select-100', mappingQ100, "Clark-Wilson→C, Bell-LaPadula→A, Biba→B");
                 } else if (qid === 101) {
-                    const selects = document.querySelectorAll('.map-select-101');
-                    let answers = [];
-                    selects.forEach(sel => answers.push(sel.value));
-                    userAnswer = answers.join(', ') || "(no selection)";
-                    const correct = mappingQ101.map(m => m.correct);
-                    isCorrect = answers.length === correct.length && answers.every((v, idx) => v === correct[idx]);
-                    correctAnswerStr = "Time of check→C, Covert channel→A, Time of use→D, Maintenance hooks→E, Parameter checking→F, Race condition→B";
+                    answer = getMappingAnswer('.map-select-101', mappingQ101, "Time of check→C, Covert channel→A, Time of use→D, Maintenance hooks→E, Parameter checking→F, Race condition→B");
+                } else if (qid === 36 || qid === 92) {
+                    answer = getMultiAnswer(qid);
                 } else {
-                    const isMulti = (qid === 36 || qid === 92);
-                    if (isMulti) {
-                        const checkboxes = document.querySelectorAll(`input[name="q${qid}_chk"]:checked`);
-                        const selected = Array.from(checkboxes).map(cb => cb.value).sort();
-                        userAnswer = selected.join(', ') || "(none)";
-                        const correctRaw = answersMap[qid];
-                        const correctArray = correctRaw.split(',').map(s => s.trim()).sort();
-                        isCorrect = selected.length === correctArray.length && correctArray.every((v, i) => v === selected[i]);
-                        correctAnswerStr = correctRaw;
-                    } else {
-                        const radio = document.querySelector(`input[name="q${qid}"]:checked`);
-                        userAnswer = radio ? radio.value : "(skipped)";
-                        const correctLetter = answersMap[qid];
-                        isCorrect = (radio && radio.value === correctLetter);
-                        correctAnswerStr = correctLetter;
-                    }
+                    answer = getSingleAnswer(qid);
                 }
-                const status = (userAnswer === "(skipped)" ? "skipped" : (isCorrect ? "correct" : "incorrect"));
-                results.push({ qid, userAnswer, correctAnswer: (qid === 100 || qid === 101) ? correctAnswerStr : (answersMap[qid] || "Mapping"), isCorrect, status, explanation });
-                const hashtagSpan = document.getElementById(`hashtag-${qid}`);
-                if (hashtagSpan) {
-                    if (status === "correct") hashtagSpan.innerHTML = " #️⃣ correct";
-                    else if (status === "incorrect") hashtagSpan.innerHTML = " #️⃣ incorrect";
-                    else hashtagSpan.innerHTML = " #️⃣ skipped";
-                    hashtagSpan.className = `hashtag ${status}`;
-                }
+
+                const status = getStatus(answer.userAnswer, answer.isCorrect);
+                const correctAnswer = getCorrectAnswer(qid, answer.correctAnswerStr);
+                results.push({ qid, userAnswer: answer.userAnswer, correctAnswer, isCorrect: answer.isCorrect, status, explanation });
+                updateHashtag(qid, status);
             }
             return results;
         }
@@ -684,7 +698,7 @@
             results.forEach(r => {
                 csvRows.push([r.qid, r.userAnswer, r.correctAnswer, r.isCorrect ? "Correct" : (r.userAnswer === "(skipped)" ? "Skipped" : "Incorrect"), r.explanation]);
             });
-            const csvContent = csvRows.map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(",")).join("\n");
+            const csvContent = csvRows.map(row => row.map(cell => `"${String(cell).replaceAll('"', '""')}"`).join(",")).join("\n");
             const blob = new Blob(["\uFEFF" + csvContent], { type: "text/csv;charset=utf-8;" });
             const link = document.createElement("a");
             const url = URL.createObjectURL(blob);
@@ -692,7 +706,7 @@
             link.setAttribute("download", "domain3_results.csv");
             document.body.appendChild(link);
             link.click();
-            document.body.removeChild(link);
+            link.remove();
             URL.revokeObjectURL(url);
         }
 

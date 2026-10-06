@@ -24,7 +24,7 @@ cd "$root"
 wiki_dir="${1:?Usage: sync-wiki.sh <wiki_dir>}"
 
 if [[ ! -d "$wiki_dir/.git" ]]; then
-  echo "::error::$wiki_dir is not a git repo (no .git). Clone the wiki repo first."
+  echo "::error::$wiki_dir is not a git repo (no .git). Clone the wiki repo first." >&2
   exit 1
 fi
 

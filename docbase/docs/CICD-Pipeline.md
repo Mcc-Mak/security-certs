@@ -6,10 +6,12 @@ A single workflow (`.github/workflows/ci-cd.yml`) runs on every `dev-001` push (
 
 ## Job chain
 
-```
-release → fast_checks → security_checks → promote → ┬─ pages
-                                                     ├─ wiki
-                                                     └─ sonar_baseline
+```mermaid
+graph LR
+    release --> fast_checks --> security_checks --> promote
+    promote --> pages
+    promote --> wiki
+    promote --> sonar_baseline
 ```
 
 ## Jobs

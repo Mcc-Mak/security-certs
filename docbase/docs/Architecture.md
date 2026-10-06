@@ -2,39 +2,30 @@
 
 ## Overview
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                    codebase/ (source)                    │
-│  ┌─────────────────────┐    ┌─────────────────────────┐ │
-│  │  comptia-network+/  │    │      isc-cissp/         │ │
-│  │  note/chapter/      │    │  note/chapter/          │ │
-│  │  note/chapter/      │    │  note/chapter/          │ │
-│  │    intermediate/    │    │    intermediate/        │ │
-│  │  note/tip/          │    │  note/tip/              │ │
-│  │  question-bank/     │    │  question-bank/         │ │
-│  └─────────────────────┘    └─────────────────────────┘ │
-└─────────────────────────────────────────────────────────┘
-          │                                    │
-          ▼                                    ▼
-┌─────────────────────┐              ┌─────────────────────┐
-│  scripts/           │              │  docbase/           │
-│  build-pages.sh     │              │  docs/*.md          │
-│  sync-wiki.sh       │              │  TOCTREE.md         │
-│  validate-notes.sh  │              └─────────────────────┘
-└─────────────────────┘                        │
-          │                                    │
-          ▼                                    ▼
-┌─────────────────────┐              ┌─────────────────────┐
-│  _site/ (assembled) │              │  GitHub Wiki        │
-│  pages/ shell +     │              │  (docbase/ eng docs │
-│  codebase/ content  │              │   flattened to root)│
-└─────────────────────┘              └─────────────────────┘
-          │
-          ▼
-┌─────────────────────┐
-│  GitHub Pages       │
-│  (Docsify, CSR)     │
-└─────────────────────┘
+```mermaid
+graph TD
+    subgraph codebase["codebase/ (source)"]
+        comptia["comptia-network+/<br/>note/chapter/<br/>note/chapter/intermediate/<br/>note/tip/<br/>question-bank/"]
+        isc["isc-cissp/<br/>note/chapter/<br/>note/chapter/intermediate/<br/>note/tip/<br/>question-bank/"]
+    end
+
+    subgraph scripts["scripts/"]
+        buildPages["build-pages.sh"]
+        syncWiki["sync-wiki.sh"]
+        validateNotes["validate-notes.sh"]
+    end
+
+    subgraph docbase["docbase/"]
+        docs["docs/*.md"]
+        toctree["TOCTREE.md"]
+    end
+
+    codebase --> buildPages
+    codebase --> _site
+    buildPages --> _site["_site/ (assembled)<br/>pages/ shell +<br/>codebase/ content"]
+    _site --> pages["GitHub Pages<br/>(Docsify, CSR)"]
+    docbase --> syncWiki
+    syncWiki --> wiki["GitHub Wiki<br/>(docbase/ eng docs<br/>flattened to root)"]
 ```
 
 ## Deployment surfaces

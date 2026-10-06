@@ -37,7 +37,6 @@
         }
 
         .toolbar {
-            background: white;
             border-radius: 20px;
             padding: 1rem 1.5rem;
             margin-bottom: 2rem;
@@ -686,7 +685,7 @@
             results.forEach(r => {
                 csvRows.push([r.qid, r.userAnswer, r.correctAnswer, r.isCorrect ? "Correct" : (r.userAnswer === "(skipped)" ? "Skipped" : "Incorrect"), r.explanation]);
             });
-            const csvContent = csvRows.map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(",")).join("\n");
+            const csvContent = csvRows.map(row => row.map(cell => `"${String(cell).replaceAll('"', '""')}"`).join(",")).join("\n");
             const blob = new Blob(["\uFEFF" + csvContent], { type: "text/csv;charset=utf-8;" });
             const link = document.createElement("a");
             const url = URL.createObjectURL(blob);
@@ -694,7 +693,7 @@
             link.setAttribute("download", "domain5_results.csv");
             document.body.appendChild(link);
             link.click();
-            document.body.removeChild(link);
+            link.remove();
             URL.revokeObjectURL(url);
         }
 
