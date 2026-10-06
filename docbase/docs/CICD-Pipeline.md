@@ -40,7 +40,10 @@ release → fast_checks → security_checks → promote → ┬─ pages
 
 **Purpose**: SonarQube Cloud quality gate. Optional.
 
-- When `SONAR_TOKEN` is **configured**: runs SonarCloud scan + quality gate check (fail-closed on ERROR/NONE)
+- When `SONAR_TOKEN` is **configured**: runs SonarCloud scan + quality gate check
+  - Fail-closed on **ERROR** status
+  - **NONE** is non-fatal: SonarCloud's free plan blocks non-main branch QG queries via API (HTTP 403); the main-branch fallback returns NONE until a baseline exists. Since the CE task succeeding means the scan was accepted, NONE is treated as a first-run / plan-limitation scenario
+  - The QG check tries three API approaches in order: `analysisId`, `projectKey+branch`, `projectKey` (main)
 - When `SONAR_TOKEN` is **absent**: emits a notice and passes
 - CodeQL is intentionally omitted — no analyzable source code in a prose repo
 
@@ -80,7 +83,7 @@ release → fast_checks → security_checks → promote → ┬─ pages
 **Purpose**: Establish SonarCloud main-branch baseline (informational only).
 
 - Checks out `main`
-- Runs SonarCloud scan with `GITHUB_REF=refs/heads/main`
+- Runs SonarCloud scan with `GITHUB_REF=refs/heads/main`, `GITHUB_REF_NAME=main`, and `args: -Dsonar.branch.name=main` to ensure the scan is attributed to the `main` branch (not the workflow trigger branch `dev-001`)
 - No quality-gate check, no fail-closed
 - Ensures the dashboard has a current main-branch baseline for new-code calculations
 

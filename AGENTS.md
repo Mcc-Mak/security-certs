@@ -143,13 +143,13 @@ A single workflow run on every `dev-001` push (plus `workflow_dispatch`). All jo
 
 1. **`release`** — bump version and update `CHANGELOG.md` from conventional commits. Pushes a `chore(release): X.Y.Z` commit to `dev-001` (does not re-trigger because `CHANGELOG.md` is in `paths-ignore`).
 2. **`fast_checks`** (needs: release) — run `scripts/validate-notes.sh` (filename conventions, directory naming, mermaid fence balance, encoding). Gate.
-3. **`security_checks`** (needs: fast_checks) — **SonarQube Cloud** only (quality gate, fail-closed when `SONAR_TOKEN` is configured; skipped with a notice when absent). CodeQL is dropped — there is no analyzable source code in a prose repo.
+3. **`security_checks`** (needs: fast_checks) — **SonarQube Cloud** only (quality gate, fail-closed on ERROR when `SONAR_TOKEN` is configured; NONE is non-fatal; skipped with a notice when absent). CodeQL is dropped — there is no analyzable source code in a prose repo.
 4. **`promote`** (needs: security_checks) — direct `git push` of the dev-001 HEAD to `dev` and `main` using `GITHUB_TOKEN`. No PRs; gate checks already ran in steps 2-3. `--force-with-lease` handles stale merge commits.
-5. **`pages`** + **`wiki`** + **`sonar_baseline`** (needs: promote, parallel) — check out `main` (the promoted commit): assemble the Docsify site from `pages/` + `codebase/` and deploy to Pages; publish `docbase/` engineering docs to the GitHub Wiki (uses `PROMOTE_TOKEN`); run an informational SonarCloud scan to establish the main-branch baseline.
+5. **`pages`** + **`wiki`** + **`sonar_baseline`** (needs: promote, parallel) — check out `main` (the promoted commit): assemble the Docsify site from `pages/` + `codebase/` and deploy to Pages; publish `docbase/` engineering docs to the GitHub Wiki (uses `PROMOTE_TOKEN`); run an informational SonarCloud scan (with `GITHUB_REF`/`GITHUB_REF_NAME`/`args` overrides to attribute to `main`) to establish the main-branch baseline.
 
 `GITHUB_TOKEN` pushes do not trigger new workflow runs (GitHub security feature), which is exactly what we want — the entire pipeline is one run. GitHub does not create the `.wiki.git` repo until the first page is saved through the web UI; until then the `wiki` job warns and exits 0 (non-blocking).
 
-When editing workflows, preserve the job chain (release -> fast_checks -> security_checks -> promote -> pages/wiki/sonar_baseline) and the gate semantics. SonarQube Cloud runs (and fails closed) when `SONAR_TOKEN` is configured; it is skipped when absent.
+When editing workflows, preserve the job chain (release -> fast_checks -> security_checks -> promote -> pages/wiki/sonar_baseline) and the gate semantics. SonarQube Cloud runs (and fails closed on ERROR) when `SONAR_TOKEN` is configured; NONE is non-fatal (first-run / free-plan limitation); it is skipped when absent.
 
 ## Conventions
 

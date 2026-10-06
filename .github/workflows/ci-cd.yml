@@ -584,7 +584,10 @@ jobs:
       - name: SonarQube Cloud Scan (main branch baseline)
         if: steps.check_sonar.outputs.has_sonar == 'true'
         uses: SonarSource/sonarqube-scan-action@d209202bc7d53ff1cc128f7f907dac145c9d6ae9  # v8
+        with:
+          args: -Dsonar.branch.name=main
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: https://sonarcloud.io
           GITHUB_REF: refs/heads/main
+          GITHUB_REF_NAME: main
