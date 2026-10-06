@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here. Versions follow semver.
 
+## 3.0.1 (2026-10-06)
+
+### Fixed
+- handle SonarCloud free-plan QG NONE status gracefully
+
 ## 3.0.0 (2026-10-06)
 
 ### Breaking
