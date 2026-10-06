@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here. Versions follow semver.
 
+## 3.2.3 (2026-10-06)
+
+### Fixed
+- self-host Bootstrap Icons to resolve SRI SonarCloud issue
+
 ## 3.2.2 (2026-10-06)
 
 ### Fixed
