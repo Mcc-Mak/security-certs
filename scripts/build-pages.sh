@@ -22,6 +22,11 @@ mkdir -p "$out"
 cp pages/index.html "$out/"
 cp pages/.nojekyll "$out/"
 
+# Vendored assets (self-hosted Bootstrap Icons CSS + fonts, no CDN/SRI needed)
+if [[ -d "pages/vendor" ]]; then
+  cp -r pages/vendor "$out/vendor"
+fi
+
 # Landing page: pages/README.md is the TOCTREE for study content.
 cp pages/README.md "$out/README.md"
 
