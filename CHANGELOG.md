@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here. Versions follow semver.
 
+## 3.5.2 (2026-10-08)
+
+### Other
+- docs: add REQ-20 through REQ-34 to spec docs
+
 ## 3.5.1 (2026-10-08)
 
 ### Fixed
