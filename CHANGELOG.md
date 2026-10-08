@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here. Versions follow semver.
 
+## 3.5.1 (2026-10-08)
+
+### Fixed
+- prevent badge/button stretching, add m-1, fix CISSP diagram hrefs
+
 ## 3.5.0 (2026-10-08)
 
 ### Added
