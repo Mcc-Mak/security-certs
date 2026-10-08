@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here. Versions follow semver.
 
+## 3.3.0 (2026-10-08)
+
+### Added
+- add search filename plugin and refine card/button styling
+
 ## 3.2.3 (2026-10-06)
 
 ### Fixed
