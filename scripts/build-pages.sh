@@ -36,13 +36,13 @@ cp pages/README.md "$out/README.md"
 #   2. The Docsify search plugin (paths: 'all') indexes all pages
 # Session titles are extracted from filenames: session-{NN}-video-..._{desc}.md
 {
-  echo "- [Home](/)"
+  echo "- [Overview](/)"
 
   for exam in comptia-network+ isc-cissp; do
     exam_label="CompTIA Network+"
     [[ "$exam" == "isc-cissp" ]] && exam_label="ISC CISSP"
 
-    echo "- [$exam_label](/$exam/README.md)"
+    echo "  - [$exam_label](/$exam/README.md)"
 
     # Collect chapter filenames, sort by session number
     while IFS= read -r _filename; do
@@ -59,7 +59,7 @@ cp pages/README.md "$out/README.md"
       # Remove leading zero
       snum="${snum#0}"
 
-      echo "  - [Session ${snum} — ${desc}](/${exam}/note/chapter/${_filename})"
+      echo "    - [Session ${snum} — ${desc}](/${exam}/note/chapter/${_filename})"
     done < <(
       for f in "codebase/$exam/note/chapter"/session-*.md; do
         [[ -f "$f" ]] && basename "$f"
@@ -69,15 +69,15 @@ cp pages/README.md "$out/README.md"
     # ── Question-bank link (if a README.md index exists) ─────────────────────
     qb_dir="codebase/$exam/question-bank"
     if [[ -f "$qb_dir/README.md" ]]; then
-      echo "  - [Question Bank](/$exam/question-bank/README.md)"
+      echo "    - [Question Bank](/$exam/question-bank/README.md)"
     fi
 
     # ── Diagrams + Reference PDFs sidebar links ───────────────────────────────
     if [[ -d "codebase/$exam/note/chapter/intermediate" ]]; then
-      echo "  - [Diagrams](/$exam/README.md?id=diagrams)"
+      echo "    - [Diagrams](/$exam/README.md?id=diagrams)"
     fi
     if [[ -d "codebase/$exam/note/tip" ]]; then
-      echo "  - [Reference PDFs](/$exam/README.md?id=reference-pdfs)"
+      echo "    - [Reference PDFs](/$exam/README.md?id=reference-pdfs)"
     fi
   done
 } > "$out/_sidebar.md"

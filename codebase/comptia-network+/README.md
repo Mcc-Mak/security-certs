@@ -39,7 +39,7 @@ This repository contains a structured summary of the complete CompTIA Network+ (
 
 | Diagram | Description |
 | :--- | :--- |
-| [Course Diagram](note/chapter/intermediate/diagram-course.md) | Comprehensive visual overview of all 28 sessions with Mermaid diagrams covering exam domains, networking concepts, and troubleshooting procedures. |
+| [Course Diagram](note/chapter/intermediate/diagram-course.md) | Comprehensive visual overview of all 28 sessions with diagrams covering exam domains, networking concepts, and troubleshooting procedures. |
 
 ---
 

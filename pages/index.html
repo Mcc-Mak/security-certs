@@ -36,6 +36,9 @@
     .markdown-section table { width: 100%; }
     /* Cards: ensure they render well inside Docsify's .markdown-section */
     .markdown-section .card { margin-bottom: 1rem; }
+    /* Card button alignment: flexbox pushes hr + buttons to bottom */
+    .markdown-section .card .card-body { display: flex; flex-direction: column; }
+    .markdown-section .card .card-text { flex: 1 1 auto; }
     /* Badge spacing */
     .markdown-section .badge { margin: 0 .2rem .2rem 0; }
 
@@ -53,6 +56,15 @@
       font-size: 15px;
       color: #2c3e50;
     }
+    /* Level-2 folder headers (exam names nested under Overview) */
+    .sidebar-nav > ul > li > ul > li.folder > a {
+      font-weight: 700;
+      font-size: 14px;
+      color: #2c3e50;
+    }
+    /* Hide auto-generated heading sub-sidebars for folder entries
+       (Overview, exams) while preserving them for file entries (sessions) */
+    .sidebar-nav li.folder > .app-sub-sidebar { display: none !important; }
     /* Ensure folder cursor indicates clickability */
     .sidebar-nav li.folder { cursor: pointer; }
 
