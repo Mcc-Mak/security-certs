@@ -25,6 +25,21 @@ Maps requirements → documents → artifacts. Keep updated when requirements or
 | REQ-17 Exam README session links | §3.3 | §Pages | — | — | §2 pages | ✓ |
 | REQ-18 Wiki dead-link transform | §3.3 | §Wiki | — | — | §2 wiki | ✓ |
 | REQ-19 Search indexes all sessions | §3.3 | §Pages | — | — | §2 pages | ✓ |
+| REQ-20 Bootstrap 5.3 styling | §3.4 | §Pages | — | §Bootstrap | — | ✓ |
+| REQ-21 Collapsible sidebar | §3.4 | §Pages | — | §Sidebar | — | ✓ |
+| REQ-22 Landing page Bootstrap cards | §3.4 | §Pages | — | §Pages UI | — | ✓ |
+| REQ-23 Question-bank index cards | §3.4 | §Pages | — | §Pages UI | — | ✓ |
+| REQ-24 Self-hosted Bootstrap Icons | §3.4 | §Pages | — | §Bootstrap | — | ✓ |
+| REQ-25 Search filename plugin | §3.4 | §Pages | — | §Search | — | ✓ |
+| REQ-26 CSS collapse override | §3.4 | §Pages | — | §CSS overrides | — | ✓ |
+| REQ-27 Card flexbox alignment | §3.4 | §Pages | — | §CSS overrides | — | ✓ |
+| REQ-28 Diagrams section in READMEs | §3.5 | §Pages | — | — | — | ✓ |
+| REQ-29 Reference PDFs section | §3.5 | §Pages | — | — | — | ✓ |
+| REQ-30 Sidebar diagrams/reference links | §3.5 | §Pages | — | §Sidebar | — | ✓ |
+| REQ-31 Raw HTML site-root-relative paths | §3.5 | §Pages | — | §Pages UI | — | ✓ |
+| REQ-32 GitHub milestones | §3.6 | — | — | — | — | ✓ |
+| REQ-33 GitHub project board | §3.6 | — | — | — | — | ✓ |
+| REQ-34 Parent/child issue hierarchy | §3.6 | — | — | — | — | ✓ |
 
 ## Documents to artifacts
 

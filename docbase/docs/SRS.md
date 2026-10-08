@@ -44,6 +44,36 @@ The system manages markdown-formatted study notes, validates their structure, an
 | REQ-18 | Wiki Home.md must transform dead links: `codebase/` → Pages site URLs, `docbase/docs/X.md` → wiki page `X`, `AGENTS.md` → GitHub source URL |
 | REQ-19 | Pages search plugin must index all session pages (`paths: 'all'`); sidebar must list all chapter files so search has full coverage |
 
+### 3.4 Pages UI
+
+| ID | Requirement |
+| :--- | :--- |
+| REQ-20 | Pages site must use Bootstrap 5.3 for styling, loaded before the Docsify theme so Docsify overrides conflicts |
+| REQ-21 | Pages sidebar must be collapsible (docsify-sidebar-collapse plugin) with `sidebarDisplayLevel: 1` (Overview expanded, exam folders collapsed by default) |
+| REQ-22 | Pages landing page must use Bootstrap cards with exam identity colors (`primary` for Network+, `success` for CISSP) and category badges (`primary`=sessions, `info`=diagrams, `warning`=question bank, `secondary`=reference PDFs) |
+| REQ-23 | Pages question-bank index must use Bootstrap cards with category color scheme (`primary` for domain-specific, `danger` for full practice tests) |
+| REQ-24 | Bootstrap Icons must be self-hosted under `pages/vendor/bootstrap-icons/` (no CDN/SRI dependency) |
+| REQ-25 | Search result titles must display filenames (not page titles) via a custom Docsify plugin (`searchFilenamePlugin`) |
+| REQ-26 | CSS must override Bootstrap `.collapse` to prevent sidebar-collapse plugin conflicts (`.sidebar-nav li.collapse { display: list-item !important; }`) |
+| REQ-27 | Card badges and buttons must use `align-self: flex-start` to prevent stretching in flex-column card-body layout |
+
+### 3.5 Exam README content
+
+| ID | Requirement |
+| :--- | :--- |
+| REQ-28 | Exam READMEs must include a Diagrams section linking to intermediate/ diagrams (consolidated sets, per-session, appendices, SVG overviews) |
+| REQ-29 | Exam READMEs must include a Reference PDFs section linking to `note/tip/` PDFs |
+| REQ-30 | Sidebar must include links to Diagrams and Reference PDFs sections via `?id=` anchors |
+| REQ-31 | Raw HTML `<a>` tags in exam READMEs must use site-root-relative paths (not Docsify `#/` hashes) for `relativePath: true` compatibility |
+
+### 3.6 Project management
+
+| ID | Requirement |
+| :--- | :--- |
+| REQ-32 | Track version history via GitHub milestones — one per release, closed when the release ships |
+| REQ-33 | Maintain a GitHub project board linked to the repo with views: Backlog (table), Board (Kanban by Status), By Milestone (table), Completed (filtered to closed issues) |
+| REQ-34 | Use parent (epic) issues per milestone, with sub-issues linked via `addSubIssue` for hierarchical tracking |
+
 ## 4. Non-functional requirements
 
 | ID | Requirement |
