@@ -38,3 +38,148 @@ This repository contains a structured summary of the complete ISC CISSP certific
 | [**Session 32**](note/chapter/session-32-video-238-to-247_software_development_security.md) | V238-V247 | **Software Development Security** - Details secure SDLC, security in development methodologies, code review, and secure coding practices. |
 | [**Session 33**](note/chapter/session-33-video-248-to-259_application_security.md) | V248-V259 | **Application Security** - Covers OWASP Top 10, web application vulnerabilities, API security, mobile application security, and security testing tools. |
 | [**Session 34**](note/chapter/session-34-video-260-to-260_course_conclusion_and_exam_preparation.md) | V260 | **Course Conclusion & CISSP Exam Preparation** - Final review of all eight domains, exam strategies, practice question approaches, and preparation checklist. |
+
+---
+
+## Diagrams
+
+### Consolidated Diagrams
+
+| Diagram | Coverage |
+| :--- | :--- |
+| [Diagram Part 1](note/chapter/intermediate/diagram-part-1.md) | Sessions 2–19 |
+| [Diagram Part 2](note/chapter/intermediate/diagram-part-2.md) | Sessions 21–34 |
+| [Consolidation](note/chapter/intermediate/consolidation.md) | Independent merged overview of all CISSP topics. |
+
+### Per-Session Diagrams
+
+<div class="row g-2">
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-02.md">Session 2</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-03.md">Session 3</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-04.md">Session 4</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-05.md">Session 5</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-06.md">Session 6</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-07.md">Session 7</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-08.md">Session 8</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-09.md">Session 9</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-10.md">Session 10</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-11.md">Session 11</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-12.md">Session 12</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-13.md">Session 13</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-14.md">Session 14</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-15.md">Session 15</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-16.md">Session 16</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-17.md">Session 17</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-18.md">Session 18</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-19.md">Session 19</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-20.md">Session 20</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-21.md">Session 21</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-22.md">Session 22</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-23.md">Session 23</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-24.md">Session 24</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-25.md">Session 25</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-26.md">Session 26</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-27.md">Session 27</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-28.md">Session 28</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-29.md">Session 29</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-30.md">Session 30</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-31.md">Session 31</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-32.md">Session 32</a>
+</div>
+<div class="col-md-3 col-sm-4 col-6">
+<a class="btn btn-outline-primary btn-sm text-dark w-100" href="note/chapter/intermediate/session-33.md">Session 33</a>
+</div>
+</div>
+
+### Appendices
+
+| Appendix | Description |
+| :--- | :--- |
+| [Appendix 1](note/chapter/intermediate/appendix-1.md) | Differences between the official study guide PDF and video content (Session 15 onward). |
+| [Appendix 2](note/chapter/intermediate/appendix-2.md) | Differences between the official study guide PDF and video content (Session 18 onward). |
+| [Diagram Appendix 1](note/chapter/intermediate/diagram-appendix-1.md) | Additional diagrams for risk assessment and threat modeling (Session 6 onward). |
+| [Diagram Appendix 2](note/chapter/intermediate/diagram-appendix-2.md) | Additional diagrams for secure network design and performance metrics (Session 18 onward). |
+
+### SVG Overviews
+
+These SVG diagrams open in a new tab.
+
+| SVG | Description |
+| :--- | :--- |
+| <a href="isc-cissp/note/chapter/intermediate/01-strategic-apex-governance-mandate.svg" target="_blank">Strategic Apex — Governance and Mandate</a> | Top-level governance layer overview. |
+| <a href="isc-cissp/note/chapter/intermediate/02-management-layer-program-design-architecture.svg" target="_blank">Management Layer — Program Design and Architecture</a> | Management layer architecture. |
+| <a href="isc-cissp/note/chapter/intermediate/03-implementation-layer-technical-control-part-1.svg" target="_blank">Implementation Layer — Technical Control (Part 1)</a> | Technical controls implementation, part 1. |
+| <a href="isc-cissp/note/chapter/intermediate/04-implementation-layer-technical-control-part-2.svg" target="_blank">Implementation Layer — Technical Control (Part 2)</a> | Technical controls implementation, part 2. |
+| <a href="isc-cissp/note/chapter/intermediate/05-implementation-layer-operational-process-control.svg" target="_blank">Implementation Layer — Operational Process Control</a> | Operational process controls. |
+| <a href="isc-cissp/note/chapter/intermediate/06-key-cross-level-relationship.svg" target="_blank">Key Cross-Level Relationship</a> | Cross-level relationship overview. |
+
+---
+
+## Reference PDFs
+
+These vendor reference materials are committed to the repository for convenience. They open in a new tab.
+
+| Resource | Description |
+| :--- | :--- |
+| <a href="isc-cissp/note/tip/CISSP%20%28Masterpiece%29%20%282026-03-20_01%29.pdf" target="_blank">CISSP Masterpiece</a> | Comprehensive CISSP overview reference. |

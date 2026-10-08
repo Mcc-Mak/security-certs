@@ -71,6 +71,14 @@ cp pages/README.md "$out/README.md"
     if [[ -f "$qb_dir/README.md" ]]; then
       echo "  - [Question Bank](/$exam/question-bank/README.md)"
     fi
+
+    # ── Diagrams + Reference PDFs sidebar links ───────────────────────────────
+    if [[ -d "codebase/$exam/note/chapter/intermediate" ]]; then
+      echo "  - [Diagrams](/$exam/README.md?id=diagrams)"
+    fi
+    if [[ -d "codebase/$exam/note/tip" ]]; then
+      echo "  - [Reference PDFs](/$exam/README.md?id=reference-pdfs)"
+    fi
   done
 } > "$out/_sidebar.md"
 

@@ -32,3 +32,23 @@ This repository contains a structured summary of the complete CompTIA Network+ (
 | [**Session 26**](note/chapter/session-26-video-242-to-250_troubleshooting_network_services.md) | V242-V250 | **Troubleshooting Network Services** - Solves issues with duplicate addresses (MAC/IP conflicts), DHCP (rogue servers, scope exhaustion), routing (asymmetrical routes, missing routes), switching/routing loops (STP, split-horizon), firewalls (ACL order), VLANs (routing between them), and DNS/NTP. |
 | [**Session 27**](note/chapter/session-27-video-251-to-256_troubleshooting_performance_issues.md) | V251-V256 | **Troubleshooting Performance Issues** - Diagnoses collisions (CSMA/CD), broadcast storms, VoIP problems (latency, jitter), and packet loss. Addresses high CPU/bandwidth utilization, low optical link budgets, certificate errors, license feature issues, BYOD challenges, and hardware failures. |
 | [**Session 28**](note/chapter/session-28-video-257-to-257_course_conclusion_and_exam_tips.md) | V257 | **Course Conclusion & Exam Tips** - Final review of exam domains and weights. Reiterates top test-taking strategies: skip simulations initially, use a brain dump sheet, manage time effectively, and take practice exams to build confidence before scheduling the real certification test. |
+
+---
+
+## Diagrams
+
+| Diagram | Description |
+| :--- | :--- |
+| [Course Diagram](note/chapter/intermediate/diagram-course.md) | Comprehensive visual overview of all 28 sessions with Mermaid diagrams covering exam domains, networking concepts, and troubleshooting procedures. |
+
+---
+
+## Reference PDFs
+
+These vendor reference materials are committed to the repository for convenience. They open in a new tab.
+
+| Resource | Description |
+| :--- | :--- |
+| <a href="comptia-network+/note/tip/CompTIA%20Network+%20%28N10-009%29%20Study%20Plan%202.pdf" target="_blank">Study Plan</a> | Structured study plan for the N10-009 exam. |
+| <a href="comptia-network+/note/tip/CompTIA%20Network+%20%28N10-009%29%20Study%20Guide%202.pdf" target="_blank">Study Guide</a> | Comprehensive study guide covering all exam domains. |
+| <a href="comptia-network+/note/tip/Comptia%20Network%20%28N10-009%29%20Exam%20Objectives%202.pdf" target="_blank">Exam Objectives</a> | Official CompTIA exam objectives for Network+ (N10-009). |
