@@ -66,6 +66,12 @@
     /* Ensure table text has good contrast */
     .markdown-section th { color: #2c3e50; }
     .markdown-section td { color: #34495e; }
+
+    /* Buttons inside content: exclude from Docsify link styling */
+    .markdown-section a.btn { font-weight: 400; text-decoration: none; }
+
+    /* Sidebar nav padding */
+    .sidebar-nav > ul { padding-left: 1rem; padding-right: 1rem; }
   </style>
 </head>
 <body>
@@ -83,7 +89,7 @@
         noData: 'No results',
         depth: 3,
         paths: 'all',
-        hideOtherSidebarContent: false
+        hideOtherSidebarContent: true
       },
       mermaidConfig: {
         querySelector: '.mermaid'
@@ -99,6 +105,29 @@
           });
           hook.afterEach(function(html) {
             return html;
+          });
+        },
+        function searchFilenamePlugin(hook) {
+          function replaceTitles() {
+            document.querySelectorAll('.results-panel .matching-post h2').forEach(function(h2) {
+              if (h2.dataset.filenameReplaced) return;
+              var a = h2.closest('a');
+              if (!a) return;
+              var href = a.getAttribute('href') || '';
+              var path = href.replace(/^#/, '').split('?')[0];
+              var filename = path.split('/').pop();
+              if (filename) {
+                h2.textContent = filename;
+                h2.dataset.filenameReplaced = 'true';
+              }
+            });
+          }
+          hook.mounted(function() {
+            var panel = document.querySelector('.results-panel');
+            if (!panel) return;
+            var observer = new MutationObserver(replaceTitles);
+            observer.observe(panel, { childList: true });
+            replaceTitles();
           });
         }
       ]

@@ -15,98 +15,98 @@
 </div>
 </div>
 
-<div class="col-md-6 col-lg-3">
+<div class="col-md-6">
 <div class="card h-100 shadow-sm border-primary">
   <div class="card-header bg-primary text-white">Domain 1</div>
   <div class="card-body">
-    <p class="card-text"><strong>Security and Risk Management</strong></p>
     <span class="badge bg-primary">100 Q</span>
+    <p class="card-text"><strong>Security and Risk Management</strong></p>
     <hr>
-    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-domain-01.html" target="_blank" class="btn btn-primary btn-sm"><i class="bi bi-box-arrow-up-right"></i> Start</a>
+    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-domain-01.html" target="_blank" class="btn btn-primary btn-sm text-light"><i class="bi bi-box-arrow-up-right"></i> Start</a>
   </div>
 </div>
 </div>
 
-<div class="col-md-6 col-lg-3">
+<div class="col-md-6">
 <div class="card h-100 shadow-sm border-primary">
   <div class="card-header bg-primary text-white">Domain 2</div>
   <div class="card-body">
-    <p class="card-text"><strong>Asset Security</strong></p>
     <span class="badge bg-primary">105 Q</span>
+    <p class="card-text"><strong>Asset Security</strong></p>
     <hr>
-    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-domain-02.html" target="_blank" class="btn btn-primary btn-sm"><i class="bi bi-box-arrow-up-right"></i> Start</a>
+    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-domain-02.html" target="_blank" class="btn btn-primary btn-sm text-light"><i class="bi bi-box-arrow-up-right"></i> Start</a>
   </div>
 </div>
 </div>
 
-<div class="col-md-6 col-lg-3">
+<div class="col-md-6">
 <div class="card h-100 shadow-sm border-primary">
   <div class="card-header bg-primary text-white">Domain 3</div>
   <div class="card-body">
-    <p class="card-text"><strong>Security Architecture and Engineering</strong></p>
     <span class="badge bg-primary">101 Q</span>
+    <p class="card-text"><strong>Security Architecture and Engineering</strong></p>
     <hr>
-    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-domain-03.html" target="_blank" class="btn btn-primary btn-sm"><i class="bi bi-box-arrow-up-right"></i> Start</a>
+    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-domain-03.html" target="_blank" class="btn btn-primary btn-sm text-light"><i class="bi bi-box-arrow-up-right"></i> Start</a>
   </div>
 </div>
 </div>
 
-<div class="col-md-6 col-lg-3">
+<div class="col-md-6">
 <div class="card h-100 shadow-sm border-primary">
   <div class="card-header bg-primary text-white">Domain 4</div>
   <div class="card-body">
-    <p class="card-text"><strong>Communication and Network Security</strong></p>
     <span class="badge bg-primary">101 Q</span>
+    <p class="card-text"><strong>Communication and Network Security</strong></p>
     <hr>
-    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-domain-04.html" target="_blank" class="btn btn-primary btn-sm"><i class="bi bi-box-arrow-up-right"></i> Start</a>
+    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-domain-04.html" target="_blank" class="btn btn-primary btn-sm text-light"><i class="bi bi-box-arrow-up-right"></i> Start</a>
   </div>
 </div>
 </div>
 
-<div class="col-md-6 col-lg-3">
+<div class="col-md-6">
 <div class="card h-100 shadow-sm border-primary">
   <div class="card-header bg-primary text-white">Domain 5</div>
   <div class="card-body">
-    <p class="card-text"><strong>Identity and Access Management</strong></p>
     <span class="badge bg-primary">100 Q</span>
+    <p class="card-text"><strong>Identity and Access Management</strong></p>
     <hr>
-    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-domain-05.html" target="_blank" class="btn btn-primary btn-sm"><i class="bi bi-box-arrow-up-right"></i> Start</a>
+    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-domain-05.html" target="_blank" class="btn btn-primary btn-sm text-light"><i class="bi bi-box-arrow-up-right"></i> Start</a>
   </div>
 </div>
 </div>
 
-<div class="col-md-6 col-lg-3">
+<div class="col-md-6">
 <div class="card h-100 shadow-sm border-primary">
   <div class="card-header bg-primary text-white">Domain 6</div>
   <div class="card-body">
-    <p class="card-text"><strong>Security Assessment and Testing</strong></p>
     <span class="badge bg-primary">100 Q</span>
+    <p class="card-text"><strong>Security Assessment and Testing</strong></p>
     <hr>
-    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-domain-06.html" target="_blank" class="btn btn-primary btn-sm"><i class="bi bi-box-arrow-up-right"></i> Start</a>
+    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-domain-06.html" target="_blank" class="btn btn-primary btn-sm text-light"><i class="bi bi-box-arrow-up-right"></i> Start</a>
   </div>
 </div>
 </div>
 
-<div class="col-md-6 col-lg-3">
+<div class="col-md-6">
 <div class="card h-100 shadow-sm border-primary">
   <div class="card-header bg-primary text-white">Domain 7</div>
   <div class="card-body">
-    <p class="card-text"><strong>Security Operations</strong></p>
     <span class="badge bg-primary">100 Q</span>
+    <p class="card-text"><strong>Security Operations</strong></p>
     <hr>
-    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-domain-07.html" target="_blank" class="btn btn-primary btn-sm"><i class="bi bi-box-arrow-up-right"></i> Start</a>
+    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-domain-07.html" target="_blank" class="btn btn-primary btn-sm text-light"><i class="bi bi-box-arrow-up-right"></i> Start</a>
   </div>
 </div>
 </div>
 
-<div class="col-md-6 col-lg-3">
+<div class="col-md-6">
 <div class="card h-100 shadow-sm border-primary">
   <div class="card-header bg-primary text-white">Domain 8</div>
   <div class="card-body">
-    <p class="card-text"><strong>Software Development Security</strong></p>
     <span class="badge bg-primary">100 Q</span>
+    <p class="card-text"><strong>Software Development Security</strong></p>
     <hr>
-    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-domain-08.html" target="_blank" class="btn btn-primary btn-sm"><i class="bi bi-box-arrow-up-right"></i> Start</a>
+    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-domain-08.html" target="_blank" class="btn btn-primary btn-sm text-light"><i class="bi bi-box-arrow-up-right"></i> Start</a>
   </div>
 </div>
 </div>
@@ -126,10 +126,10 @@
 <div class="card h-100 shadow-sm border-danger">
   <div class="card-header bg-danger text-white">Practice Test 1</div>
   <div class="card-body">
-    <p class="card-text"><strong>All Domains</strong></p>
     <span class="badge bg-danger">125 Q</span>
+    <p class="card-text"><strong>All Domains</strong></p>
     <hr>
-    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-practice-test-01.html" target="_blank" class="btn btn-danger btn-sm"><i class="bi bi-box-arrow-up-right"></i> Start</a>
+    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-practice-test-01.html" target="_blank" class="btn btn-danger btn-sm text-light"><i class="bi bi-box-arrow-up-right"></i> Start</a>
   </div>
 </div>
 </div>
@@ -138,10 +138,10 @@
 <div class="card h-100 shadow-sm border-danger">
   <div class="card-header bg-danger text-white">Practice Test 2</div>
   <div class="card-body">
-    <p class="card-text"><strong>All Domains</strong></p>
     <span class="badge bg-danger">125 Q</span>
+    <p class="card-text"><strong>All Domains</strong></p>
     <hr>
-    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-practice-test-02.html" target="_blank" class="btn btn-danger btn-sm"><i class="bi bi-box-arrow-up-right"></i> Start</a>
+    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-practice-test-02.html" target="_blank" class="btn btn-danger btn-sm text-light"><i class="bi bi-box-arrow-up-right"></i> Start</a>
   </div>
 </div>
 </div>
@@ -150,10 +150,10 @@
 <div class="card h-100 shadow-sm border-danger">
   <div class="card-header bg-danger text-white">Practice Test 3</div>
   <div class="card-body">
-    <p class="card-text"><strong>All Domains</strong></p>
     <span class="badge bg-danger">125 Q</span>
+    <p class="card-text"><strong>All Domains</strong></p>
     <hr>
-    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-practice-test-03.html" target="_blank" class="btn btn-danger btn-sm"><i class="bi bi-box-arrow-up-right"></i> Start</a>
+    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-practice-test-03.html" target="_blank" class="btn btn-danger btn-sm text-light"><i class="bi bi-box-arrow-up-right"></i> Start</a>
   </div>
 </div>
 </div>
@@ -162,10 +162,10 @@
 <div class="card h-100 shadow-sm border-danger">
   <div class="card-header bg-danger text-white">Practice Test 4</div>
   <div class="card-body">
-    <p class="card-text"><strong>All Domains</strong></p>
     <span class="badge bg-danger">125 Q</span>
+    <p class="card-text"><strong>All Domains</strong></p>
     <hr>
-    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-practice-test-04.html" target="_blank" class="btn btn-danger btn-sm"><i class="bi bi-box-arrow-up-right"></i> Start</a>
+    <a href="isc-cissp/question-bank/isc-cissp-official-practice-tests-4th-edition/mcq/mcq-practice-test-04.html" target="_blank" class="btn btn-danger btn-sm text-light"><i class="bi bi-box-arrow-up-right"></i> Start</a>
   </div>
 </div>
 </div>
