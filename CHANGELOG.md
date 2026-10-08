@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here. Versions follow semver.
 
+## 3.3.1 (2026-10-08)
+
+### Fixed
+- add text-dark to outline button, remove redundant section, fix SonarQube S7721
+
 ## 3.3.0 (2026-10-08)
 
 ### Added
