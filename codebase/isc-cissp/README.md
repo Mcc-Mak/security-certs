@@ -55,100 +55,100 @@ This repository contains a structured summary of the complete ISC CISSP certific
 
 <div class="row g-2">
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-02.md">Session 2</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-02.md">Session 2</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-03.md">Session 3</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-03.md">Session 3</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-04.md">Session 4</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-04.md">Session 4</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-05.md">Session 5</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-05.md">Session 5</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-06.md">Session 6</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-06.md">Session 6</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-07.md">Session 7</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-07.md">Session 7</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-08.md">Session 8</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-08.md">Session 8</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-09.md">Session 9</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-09.md">Session 9</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-10.md">Session 10</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-10.md">Session 10</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-11.md">Session 11</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-11.md">Session 11</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-12.md">Session 12</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-12.md">Session 12</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-13.md">Session 13</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-13.md">Session 13</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-14.md">Session 14</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-14.md">Session 14</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-15.md">Session 15</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-15.md">Session 15</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-16.md">Session 16</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-16.md">Session 16</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-17.md">Session 17</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-17.md">Session 17</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-18.md">Session 18</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-18.md">Session 18</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-19.md">Session 19</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-19.md">Session 19</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-20.md">Session 20</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-20.md">Session 20</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-21.md">Session 21</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-21.md">Session 21</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-22.md">Session 22</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-22.md">Session 22</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-23.md">Session 23</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-23.md">Session 23</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-24.md">Session 24</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-24.md">Session 24</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-25.md">Session 25</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-25.md">Session 25</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-26.md">Session 26</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-26.md">Session 26</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-27.md">Session 27</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-27.md">Session 27</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-28.md">Session 28</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-28.md">Session 28</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-29.md">Session 29</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-29.md">Session 29</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-30.md">Session 30</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-30.md">Session 30</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-31.md">Session 31</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-31.md">Session 31</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-32.md">Session 32</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-32.md">Session 32</a>
 </div>
 <div class="col-md-3 col-sm-4 col-6">
-<a class="btn btn-outline-info btn-sm text-dark w-100" href="note/chapter/intermediate/session-33.md">Session 33</a>
+<a class="btn btn-outline-info btn-sm text-dark m-1" href="isc-cissp/note/chapter/intermediate/session-33.md">Session 33</a>
 </div>
 </div>
 
