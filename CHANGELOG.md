@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here. Versions follow semver.
 
+## 3.4.0 (2026-10-08)
+
+### Added
+- add Diagrams and Reference PDFs sections to exam READMEs
+
 ## 3.3.1 (2026-10-08)
 
 ### Fixed
