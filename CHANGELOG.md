@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here. Versions follow semver.
 
+## 3.5.0 (2026-10-08)
+
+### Added
+- unify UI colors, restructure sidebar, align card buttons
+
 ## 3.4.0 (2026-10-08)
 
 ### Added
