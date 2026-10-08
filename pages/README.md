@@ -27,25 +27,12 @@
     <p class="card-text">34 session summaries across all eight CISSP domains, per-session Mermaid diagrams, and 12 interactive MCQ practice sets.</p>
     <hr>
     <a href="#/isc-cissp/README.md" class="btn btn-success btn-sm text-light"><i class="bi bi-book"></i> Browse notes</a>
-    <a href="#/isc-cissp/question-bank/README.md" class="btn btn-outline-warning btn-sm"><i class="bi bi-patch-question"></i> Question Bank</a>
+    <a href="#/isc-cissp/question-bank/README.md" class="btn btn-outline-warning btn-sm text-dark"><i class="bi bi-patch-question"></i> Question Bank</a>
   </div>
 </div>
 </div>
 
 </div>
-
----
-
-## Question Bank
-
-Interactive MCQ practice tests for **ISC CISSP** — open in a new tab as standalone HTML applications.
-
-| Type | Sets | Questions per set | Link |
-| :--- | :--- | :--- | :--- |
-| Domain-specific | 8 | 100–105 | [Open Question Bank](/isc-cissp/question-bank/README.md) |
-| Full practice tests | 4 | 125 | [Open Question Bank](/isc-cissp/question-bank/README.md) |
-
-<a href="#/isc-cissp/question-bank/README.md" class="btn btn-warning btn-sm text-dark"><i class="bi bi-patch-question"></i> Go to Question Bank</a>
 
 ---
 

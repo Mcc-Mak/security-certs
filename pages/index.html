@@ -77,6 +77,21 @@
 <body>
   <div id="app"></div>
   <script>
+    function replaceSearchTitles() {
+      document.querySelectorAll('.results-panel .matching-post h2').forEach(function(h2) {
+        if (h2.dataset.filenameReplaced) return;
+        var a = h2.closest('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var path = href.replace(/^#/, '').split('?')[0];
+        var filename = path.split('/').pop();
+        if (filename) {
+          h2.textContent = filename;
+          h2.dataset.filenameReplaced = 'true';
+        }
+      });
+    }
+
     window.$docsify = {
       name: 'Security Certs',
       repo: 'Mcc-Mak/security-certs',
@@ -108,26 +123,12 @@
           });
         },
         function searchFilenamePlugin(hook) {
-          function replaceTitles() {
-            document.querySelectorAll('.results-panel .matching-post h2').forEach(function(h2) {
-              if (h2.dataset.filenameReplaced) return;
-              var a = h2.closest('a');
-              if (!a) return;
-              var href = a.getAttribute('href') || '';
-              var path = href.replace(/^#/, '').split('?')[0];
-              var filename = path.split('/').pop();
-              if (filename) {
-                h2.textContent = filename;
-                h2.dataset.filenameReplaced = 'true';
-              }
-            });
-          }
           hook.mounted(function() {
             var panel = document.querySelector('.results-panel');
             if (!panel) return;
-            var observer = new MutationObserver(replaceTitles);
+            var observer = new MutationObserver(replaceSearchTitles);
             observer.observe(panel, { childList: true });
-            replaceTitles();
+            replaceSearchTitles();
           });
         }
       ]
